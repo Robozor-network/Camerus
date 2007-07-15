@@ -288,7 +288,13 @@ P&#345;idání dalších &#269;idel se neobešlo bez konstruk&#269;ních problém&#367;
 ukázalo jako málo citlivé a bylo to z&#345;ejm&#283; zp&#367;sobeno tím, že se jedná o 
 pr&#367;myslové &#269;idlo, které je normáln&#283; napájeno nap&#283;tím 12 až 48V. S&nbsp;naším 
 napájecím nap&#283;tím 7,2V a to ješt&#283; ob&#269;as, nebylo moc spokojeno. Byl tady p&#345;idán 
-další m&#283;ni&#269; nahoru na 12V. Byl použit m&#283;ni&#269; ze staré sí&#357;ové karty.<br>
+další m&#283;ni&#269; nahoru na 12V. Byl použit m&#283;ni&#269; ze staré sí&#357;ové karty.</font></p>
+<p align="left"><font face="Times New Roman">Samostatným konstruk&#269;ním problémem 
+bylo umíst&#283;ní kompasu. Nakonec musel být kompas umíst&#283;n nad všechny desky s 
+elektronikou a musel být orientován tak, aby &#269;idla byla pod úhlem 45<span lang="en">° 
+k </span>ose robota.<span lang="en"> Pokud byla &#269;idla v ose robota, byl kompas 
+ovliv&#328;ován zbytkovým magnetickým polem v kovových (zejména železných) &#269;ástech 
+robota.</span><br>
 &nbsp;</font></p>
 <p align="left"><font face="Times New Roman" size="4"><b>Poslední weekend p&#345;ed sout&#283;ží</b></font></p>
 <p align="left"><font face="Times New Roman">P&#345;idání kompasu na I2C sb&#283;rnici si vyžádalo p&#345;eadresaci kamery, protože kamera a 
@@ -352,6 +358,15 @@ robot vyjede ze zatá&#269;ky, bác, a je tu cihla), viz Obrázek 11. </font></p>
 <p align="center"><font face="Times New Roman"><a href="pic/image023.jpg">
 <img border="0" src="pic/image023_small.jpg" xthumbnail-orig-image="pic/image023.jpg"></a></font></p>
 <p align="center"><font face="Times New Roman">Obr<span lang="en-us">.</span> 11: IstRobot 2007 – tvar dráhy.</font></p>
+<p align="left"><font face="Times New Roman">Potenciálním problémem byly 
+magnetické stojánky na kterých staly &#269;idla &#269;asomíry. Magnetické pole nad dráhou 
+bylo díky nim zna&#269;n&#283; nehomogenní (stojánek na Obr. 11 vlevo dole a dva stojánky 
+na startu). Robot využíval kompas pouze u cihly, a z&#345;ejm&#283; byl stojánek 
+dostate&#269;n&#283; daleko/blízko, že nakonec nevadil. Údaje z kompasu se zpracovávaly 
+diferen&#269;n&#283;, takže nevadilo, že byla díky stojánk&#367;m odchylka v celkové orientaci 
+magnetického pole Zem&#283;, podstatné bylo, aby nedocházelo k velkým zak&#345;ivením pole 
+v oblasti cihly. K &#269;emuž, jak jsme zm&#283;&#345;ili, &#269;áste&#269;n&#283; docházelo, ale software se 
+s tím vypo&#345;ádal, když vážil údaje ze všech &#269;idel p&#345;i objížd&#283;ní p&#345;ekážky.</font></p>
 <p align="left"><font face="Times New Roman">Obtížnost trati se 
 ukázala hned v&nbsp;první jízd&#283;, Camerus vypadnul na p&#345;erušení. V&nbsp;druhé jízd&#283; jsme 
 snížili výkon motor&#367;, zde ale zase hrozilo, že se robot nerozjede, pokud n&#283;kde (nap&#345;íklad 
