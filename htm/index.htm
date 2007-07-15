@@ -1,0 +1,430 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="cs">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Nová stránka 1</title>
+</head>
+
+<body>
+
+<p align="center"><font face="Arial"><font size="7">Robot CAMERUS<br>
+</font><font size="4">Jak se d&#283;lá robot na IstRobot<br>
+</font><br>
+<a href="mailto:kaklik@mlab.cz">kaklik@mlab.cz</a>; <a href="mailto:kakl@i.cz">
+kakl@i.cz</a><br>
+&nbsp;</font></p>
+<p align="center"><a href="pic/image001.jpg">
+<img border="0" src="pic/image001_small.jpg" xthumbnail-orig-image="pic/image001.jpg"></a></p>
+<p align="left"><font face="Times New Roman">Tato dokumentace popisuje konstrukci robota 
+Camerus, který byl zkonstruován pro sout&#283;ž IstRobot pro kategorii Stopár (<a href="http://www.robotika.sk/contest/">http://www.robotika.sk/contest/</a>).
+<br>
+<br>
+Snažili jsme se technickou dokumentaci pojmout pon&#283;kud netradi&#269;n&#283;. Krom&#283; 
+popisu finální verze robota zde naleznete chronologický popis jeho vývoje a 
+popis všech slepých uli&#269;ek. Doufáme, že takováto forma dokumentace bude mít pro 
+naše následovníky v&#283;tší hodnotu než pouhý návod na zopakování konstrukce.<br>
+&nbsp;</font></p>
+<p align="left"><font face="Times New Roman" size="4"><b>Robot 3Orbis</b></font></p>
+<p align="left"><font face="Times New Roman"><span lang="cs">Vývoj robota Camerus za&#269;al p&#345;ed více jak dv&#283;ma roky vývojem 
+robota 3Orbis. Robot 3Orbis m&#283;l mít novou revolu&#269;ní koncepci podvozku. Použili 
+jsme t&#345;íkolý podvozek, který m&#283;l dv&#283; hnaná kola, každé s&nbsp;nezávislým motorem a 
+t&#345;etí kolo, které m&#283;lo &#345;ízené zatá&#269;ení. Jednalo se tedy o nonholonomní podvozek. 
+Koncepci podvozku jsme nejd&#345;íve ov&#283;&#345;ovali se dv&#283;ma senzory na &#269;áru, jako to m&#283;ly 
+naši p&#345;edchozí holonomní roboti. To moc nefungovalo a proto jsme p&#345;idali další 
+senzory, pomocí kterých se diskrétn&#283; nastavoval úhel zatá&#269;ecího kole&#269;ka.</span></font></p>
+<p align="center"><font face="Times New Roman"><a href="pic/image003.jpg">
+<img border="0" src="pic/image003_small.jpg" xthumbnail-orig-image="pic/image003.jpg"></a></font></p>
+<p align="center"><font face="Times New Roman">Ob<span lang="en-us">r.</span>1: První pokusy s&nbsp;t&#345;íkolým a t&#345;ímotorovým robotem<br>
+<br>
+<a href="pic/image005.jpg">
+<img border="0" src="pic/image005_small.jpg" xthumbnail-orig-image="pic/image005.jpg"></a></font></p>
+<p align="center"><font face="Times New Roman">Obr<span lang="en-us">.</span> 2: Baterie senzor&#367; na &#269;áru</font></p>
+<p align="left"><font face="Times New Roman"><br>
+P&#345;idáním dalších senzor&#367; na &#269;áru jsme se dostali do problém&#367; s&nbsp;po&#269;tem vstup&#367; 
+použitého procesoru (PIC16F88). Tento problém jsme vy&#345;ešili tak, že jsme na 
+zpracování signál&#367; ze senzor&#367; na &#269;áru použili další samostatný procesor. Toto 
+&#345;ešení se však pozd&#283;ji neukázalo jako výhodné, protože ladit distribuovaný kód 
+bylo &#345;ádov&#283; obtížn&#283;jší a navíc se musela naprogramovat komunikace mezi procesory. 
+&#268;asto se nám také stávalo, že jsme b&#283;hem vývoje do jednoho procesoru nahráli kód 
+pro druhý procesor, což kupodivu ob&#269;as trvalo ur&#269;itou dobu, než jsme na to 
+p&#345;išli.<br>
+&nbsp;</font></p>
+<p align="center"><font face="Times New Roman"><a href="pic/image007.jpg">
+<img border="0" src="pic/image007_small.jpg" xthumbnail-orig-image="pic/image007.jpg"></a></font></p>
+<p align="center"><font face="Times New Roman">Obr<span lang="en-us">. </span>3: P&#345;ední náhon; p&#345;idáno druhé patro na 
+elektroniku<br>
+&nbsp;</font></p>
+<p align="left"><font face="Times New Roman">P&#367;vodní koncepce p&#345;edpokládala hnaná kola vp&#345;edu a zatá&#269;ecí kolo vzadu. 
+Modelá&#345;ské servo však nedokázalo dostate&#269;n&#283; rychle zatá&#269;et, p&#345;estože bylo 
+zp&#345;evodováno do rychla p&#345;evodem 1:2. Zm&#283;nili jsme proto uspo&#345;ádání na hnanou 
+nápravu vzadu a zatá&#269;ecí kole&#269;ko vp&#345;edu. To nám umož&#328;ovalo „ost&#345;e &#345;ezat zatá&#269;ky“, 
+ale objevily se další problémy. Podvozek se v&nbsp;zatá&#269;kách dostával do smyku a 
+protože hmotnost &#269;idel byla nezanedbatelná, docházelo i k&nbsp;jeho nakláp&#283;ní a 
+následn&#283; k&nbsp;falešnému signálu z&nbsp;&#269;idel, protože &#269;idla nebyla držena v&nbsp;konstantní 
+vzdálenosti od povrchu.<br>
+<br>
+Pro 3Orbise byla vysoustružena duralová kola, pro která bylo plánováno obutí „O“ 
+kroužky. To se pak ukázalo jako nepoužitelné. „O“ kroužky se nedokázaly udržet 
+v&nbsp;drážkách na kolech. P&#367;vodní kola byla tedy nahrazena plastovými z&nbsp;d&#283;tské 
+hra&#269;ky. Kola m&#283;la menší pr&#367;m&#283;r, což zlepšilo p&#345;evodový pom&#283;r, který byl pro 
+vyrobené p&#345;evodovky 5:1. Jako obutí byly použity ust&#345;ižené prsty z&nbsp;latexových 
+rukavic pro domácnost. Jako obutí zatá&#269;ecího kole&#269;ka bylo použito pryžové 
+t&#283;sn&#283;ní 12x10x2. Na zatá&#269;ecí kole&#269;ko bylo obuto tak, že se jelo po hran&#283; t&#283;sn&#283;ní.</font></p>
+<p align="center"><font face="Times New Roman">
+<br>
+<a href="pic/image009.jpg">
+<img border="0" src="pic/image009_small.jpg" xthumbnail-orig-image="pic/image009.jpg"></a></font></p>
+<p align="center"><font face="Times New Roman">Obr<span lang="en-us">.</span> 4: Robot 3Orbis. Zadní náhon a menší kole&#269;ka z&nbsp;autobusu 
+od syna pana Hronka.<br>
+Je vid&#283;t &#269;idlo na hledání hrany cihly.</font></p>
+<p align="left"><font face="Times New Roman"><br>
+Pro detekci a objížd&#283;ní cihly byly na robotovi namontovány IR senzory. Jeden m&#283;l 
+detekovat p&#345;ekážku na dráze a zbylé dva m&#283;ly sloužit pro její objetí. Objetí 
+cihly pomocí IR senzor&#367; jsme však nedokázali odladit. Objížd&#283;ní nebylo 
+spolehlivé a tak robot nakonec objížd&#283;l cihlu naslepo. <br>
+P&#345;i sout&#283;ži se objevil ne&#269;ekaný problém, kv&#367;li kterému robot nakonec nedojel. 
+Sout&#283;žní dráha je tvo&#345;ena dv&#283;ma deskami. Desky nejsou dokonale slícovány a tak 
+mezi nimi vzniká tmavá mezera. Tato mezera byla na sout&#283;žní dráze p&#345;elepena 
+bílou lepicí páskou. Bohužel &#269;idla na &#269;áru, které robot používal, vyhodnocovala 
+bílou lepicí pásku jako &#269;ernou (&#269;idla pracují blízko ultrafialové oblasti). 
+Tento problém by šel kompenzovat programov&#283;, ale na sout&#283;ži se nepoda&#345;ilo 
+program v&nbsp;&#269;asové tísni správn&#283; upravit. Robot tedy nakonec nedojel.<br>
+<br>
+Odhadovali jsme, že nám chyb&#283;l tak týden na odlad&#283;ní firmware, protože v&nbsp;roce 
+2006 u nás byla povode&#328; a ztratili jsme tak nejmén&#283; jeden m&#283;síc ve&#269;er&#367; na 
+programování. Nyní s&nbsp;odstupem &#269;asu vidíme, že co se týká objetí cihly, chyb&#283;lo 
+mnohem více.<br>
+&nbsp;</font></p>
+<p align="left"><font face="Times New Roman" size="4"><b>Robot Laserus</b></font></p>
+<p align="left"><font face="Times New Roman">Další verzí robota se shodným podvozkem byl robot Laserus. Snahou bylo odstranit 
+„t&#283;žká“ &#269;idla p&#345;edsunutá p&#345;ed robota a tak odstranit p&#345;ekláp&#283;ní v&nbsp;ostrých 
+zatá&#269;kách. &#344;ešením by bylo zv&#283;tšení dosahu &#269;idel na &#269;áru tak, aby mohla být 
+umíst&#283;na co nejblíže k&nbsp;ose otá&#269;ení robota. Zárove&#328; by se tím snížila obvodová 
+setrva&#269;ná hmotnost robota. Znovu jsme použili t&#345;íkolý podvozek s&nbsp;jedním &#345;ízeným 
+zatá&#269;ecím kole&#269;kem, p&#345;estože na IstRobotu 2006 byla tato konfigurace diskutována 
+a auto&#345;i druhého robota s&nbsp;podobnou koncepcí se v&nbsp;diskusi vyjád&#345;ili, že to nebyl 
+dobrý nápad, že robot p&#345;i v&#283;tších rychlostech má snahu se rozkmitávat. &#344;ešení 
+tohoto problému jsme vid&#283;li ve zjemn&#283;ní snímání &#269;áry tak, aby se precizn&#283;ji 
+nastavovalo zatá&#269;ecí kole&#269;ko.<span lang="en-us"> </span>Napadlo nás použít laserovou &#269;te&#269;ku &#269;árového kódu a skute&#269;n&#283; jsme postavili 
+funk&#269;ního robota (viz Obrázek 5), který dokázal, ale pomalu, jezdit po &#269;á&#345;e. </font></p>
+<p align="center"><font face="Times New Roman"><a href="pic/image011.jpg">
+<img border="0" src="pic/image011_small.jpg" xthumbnail-orig-image="pic/image011.jpg"></a></font></p>
+<p align="center"><font face="Times New Roman">Obr<span lang="en-us">.</span> 5: Robot Laserus. 
+Na obrázku je vid&#283;t &#269;ervená stopa LASERu.</font></p>
+<p align="left"><font face="Times New Roman"> <br>
+Problémy s&nbsp;touto konstrukcí byly dva. Pokud byl na dráze hrbol, tak se v&nbsp;d&#367;sledku 
+vibrací zmenšil rozkmit laseru, protože laser je ve &#269;tecím za&#345;ízení rozmítáván 
+mechanicky zrcátkem, které vibruje a velké stranové zrychlení p&#345;i p&#345;ejetí hrbolu 
+zp&#367;sobovalo, že elektromagnetický mechanismus, který pohybuje zrcátkem vypadl z&nbsp;rezonance. 
+Tento problém by ovšem z&#345;ejm&#283; šlo kompenzovat softwarem, protože se &#269;ára &#269;etla 
+v&nbsp;obou sm&#283;rech pohybu zrcátka. Jednou jsme tedy dostali polohu &#269;áry m&#283;&#345;enou z 
+leva a jednou z prava.<br>
+<br>
+Druhý problém byl závažn&#283;jší. Protože bylo použito za&#345;ízení na &#269;tení &#269;árového 
+kódu, snímali jsme vlastn&#283; polohu jedné &#269;áry ve scanovaném prostoru. V&nbsp;prudké 
+zatá&#269;ce však dochází k&nbsp;tomu, že &#269;áru vidí sníma&#269; šikmo a tak se relativn&#283; 
+zv&#283;tšuje její tlouš&#357;ka. Vnit&#345;ní elektronika sníma&#269;e vyhodnotila tento stav, jako 
+že se nejedná o &#269;árový kód a &#269;áru vyfiltrovala. To samoz&#345;ejm&#283; m&#283;lo v&nbsp;ostré 
+zatá&#269;ce fatální následky. Dále jsme touto cestou nepokra&#269;ovali, p&#345;esto, že víme, 
+že v&nbsp;závod&#283; DARPA se &#269;asto používají laserové dálkom&#283;ry. Na sout&#283;žních vozech je 
+však vid&#283;t, že konstrukté&#345;i také mají problémy s&nbsp;odtlumením vibrací.<br>
+&nbsp;</font></p>
+<p align="left"><font face="Times New Roman" size="4"><b>Robot Camerus</b></font></p>
+<p align="left"><font face="Times New Roman">Znovu se vyno&#345;il nápad, použít pro snímání &#269;áry kameru. To už nás napadlo 
+n&#283;kolikrát, ale když jsme nápad analyzovali, vždy se ukázalo, že jednoduchým 
+jedno&#269;ipovým mikropo&#269;íta&#269;em nelze zpracovávat obraz kamery. Druhým problémem je, 
+že b&#283;žn&#283; dostupné kamery mají snímkový kmito&#269;et 50Hz, což se nám zdálo na 
+snímání &#269;áry pomalé.<span lang="en-us"> </span>P&#345;esto jsme zakoupili jednu kameru a za&#269;ali jsme osciloskopem testovat, co tak 
+kamera vidí a jak by se to dalo zpracovat. Kupodivu jsme zjistili, že s&nbsp;procesorem 
+na 20MHz stíháme na&#269;íst jeden obrazový &#345;ádek asi s&nbsp;polovi&#269;ním rozlišením. To 
+bylo povzbudivé a zam&#283;&#345;ili jsme se tímto sm&#283;rem.<br>
+Druhým problémem bylo, že kamera nesnímá kontrastní obraz. Jak se vypo&#345;ádat v&nbsp;jedno&#269;ipovém 
+po&#269;íta&#269;i s&nbsp;tímto problémem, když jeho výpo&#269;etní výkon sta&#269;í sotva na na&#269;tení 
+&#345;ádku a ješt&#283; se musí po&#269;ítat regulace pro elektronický diferenciál? (Pro 
+zvolenou koncepci podvozku je nutné diferencovat otá&#269;ky motor&#367; na hnaných 
+nápravách.)<br>
+<br>
+Problém jsme vy&#345;ešili n&#283;&#269;ím, &#269;emu jsme pracovn&#283; za&#269;ali &#345;íkat „digitální 
+komparátor“. Jednoduše jsme pomocí logických hradel provedli OR t&#345;ech nejvyšších 
+bit&#367; jasového signálu z&nbsp;kamery. Všechno co bylo pod 0x1F bylo tedy &#269;erné a 
+všechno nad bylo bílé. Expozici kamery pak bylo nutné nastavit tak, aby 
+nejsv&#283;tlejší &#269;erná &#269;ára, byla ješt&#283; &#269;erná. To se ud&#283;lalo snadno osciloskopem, 
+ale pro závod bylo nutné vyvinout n&#283;jakou strategii, jak robot provede ur&#269;ení 
+expozice. &#344;ešením byla rutina „Expozimetr“, která postupn&#283; zvyšuje expozi&#269;ní &#269;as 
+a hledá ve snímku (samoz&#345;ejm&#283;, že v&nbsp;našem p&#345;ípad&#283; na jedné &#345;ádce) &#269;áru 
+definované tlouš&#357;ky. Vychází se z&nbsp;toho, že nejd&#345;íve p&#345;i podexponování je &#269;erný 
+celý obrázek, pak se postupn&#283; obrázek vyjas&#328;uje, což je ovšem díky chyb&#283; 
+apertury objektivu nerovnom&#283;rné. Dalším zvyšováním &#269;asu expozice se nakonec 
+objeví &#269;ára správné tlouš&#357;ky, ta se pak dále zten&#269;uje a nakonec je snímek 
+p&#345;epálen a &#269;ára zmizí. Samoz&#345;ejm&#283; se p&#345;edpokládalo, že na startu robot &#269;áru vidí 
+a ta je p&#345;ed ním p&#345;ibližn&#283; uprost&#345;ed. <br>
+<br>
+První pokusy vypadaly velmi optimisticky, robot se držel &#269;áry a vyjel jenom 
+ob&#269;as. Zajímavé bylo, že robot dokázal jezdit jenom po dráze, kde nebyly zatá&#269;ky 
+doleva! Protože jsme nem&#283;li k&nbsp;dispozici obraz z&nbsp;kamery, aby bylo možné 
+zkontrolovat co kamera vidí, bylo nutné tento problém &#345;ešit pouhou úvahou. 
+Napadlo nás, že m&#367;že docházet k „vytrhávání obrazu“ na krajích snímku. 
+Kompenzovalo se to tím, že se zahazovaly okraje &#345;ádku a skute&#269;n&#283; to pomohlo, 
+robot spolehliv&#283;, i když pomalu, sledoval &#269;áru. To byl velký úsp&#283;ch, protože 
+kdyby nám n&#283;kdo &#345;ekl p&#345;ed rokem, že to s&nbsp;kamerou a jedno&#269;ipovým po&#269;íta&#269;em jde, a 
+že je to spolehlivé, asi by jsme mu nev&#283;&#345;ili.<br>
+<br>
+Po prvotních úsp&#283;ších jsme zkusili zrychlit jenže to nefungovalo, robot vždy 
+vypadl z&nbsp;dráhy, když se zatá&#269;ecí kole&#269;ko oto&#269;ilo o velký úhel. Napadlo nás, že 
+to m&#367;že být zp&#367;sobeno proudovými špi&#269;kami, které zp&#367;sobuje motor serva. Pro 
+stabilizaci napájení pro elektroniku byl totiž použit lineární stabilizátor s&nbsp;velkým 
+drop-outem. Proto jsme vyvinuli m&#283;ni&#269;, který i p&#345;i poklesu nap&#283;tí baterií o 2V 
+dokázal udržet nap&#283;tí pro &#345;ídící elektroniku a zejména kameru stabilní. Po tomto 
+vylepšení už robot dosahoval pom&#283;rn&#283; slušné rychlosti a nejzajímav&#283;jší bylo, že 
+díky „velké“ rozlišovací schopnosti kamery (procesor dokázal rozlišit asi 50 
+bod&#367;) byla jízda v&nbsp;zatá&#269;kách velmi plynulá.<br>
+<br>
+Problém s&nbsp;tmou v&nbsp;tunelu byl vy&#345;ešen jednoduše tak, že si robot celou cestu 
+svítil. Na osv&#283;tlení dráhy byly použity &#269;ervené LED. Nevíme, jaká barva pro 
+osv&#283;tlení dráhy je nejlepší, eventueln&#283;, jestli je lepší svítit bíle. S&nbsp;tím jsme 
+už nestihli p&#345;ed sout&#283;ží experimentovat.<br>
+<br>
+Protože použitý procesor PIC16F876A neumí násobit a v&#367;bec jeho výpo&#269;etní výkon 
+není omra&#269;ující (kdybychom ho ale m&#283;li p&#345;ed lety, tak by jsme si ur&#269;it&#283; 
+nest&#283;žovali), byl celkem problém naprogramovat elektronický diferenciál na 
+hnanou nápravu. Nakonec se to vy&#345;ešilo procedurou „jakonásobení“, která 
+kombinací rotací a podmín&#283;ného s&#269;ítání provádí rychle pot&#345;ebný výpo&#269;et s&nbsp;uspokojivou 
+p&#345;esností.</font></p>
+<p align="center"><font face="Times New Roman"><a href="pic/image013.jpg">
+<img border="0" src="pic/image013_small.jpg" xthumbnail-orig-image="pic/image013.jpg"></a></font></p>
+<p align="center"><font face="Times New Roman">Obr<span lang="en-us">.</span> 6: M&#283;ni&#269; v&nbsp;krabi&#269;ce od &#269;aje a primitivní 
+osv&#283;tlení dráhy.<br>
+&nbsp;</font></p>
+<p align="center"><font face="Times New Roman"><a href="pic/image015.jpg">
+<img border="0" src="pic/image015_small.jpg" xthumbnail-orig-image="pic/image015.jpg"></a></font></p>
+<p align="center"><font face="Times New Roman">Obr<span lang="en-us">.</span> 7: Robot, p&#345;ítel &#269;lov&#283;ka.</font></p>
+<p align="left"><font face="Times New Roman">Za&#269;ali jsme tedy testovat pro sledování &#269;áry asi nejobtížn&#283;jší v&#283;c, dlouhou 
+rovinku a na konci pravoúhlou zatá&#269;ku. P&#345;i dalším zvyšování rychlosti za&#269;al 
+robot v&nbsp;takové zatá&#269;ce vypadávat. Ne, že by p&#345;ímo vyjel a nevrátil se na dráhu, 
+ale polom&#283;r zatá&#269;ení byl menší než polom&#283;r zatá&#269;ky a hrozilo tedy, že v&nbsp;Bratislav&#283; 
+spadne ze stolu. Ud&#283;lali jsme p&#345;edpoklad, že je to zp&#367;sobeno pomalým snímkovým 
+kmito&#269;tem kamery, než si robot sta&#269;il všimnout, že je zatá&#269;ka ostrá, zmizela mu 
+&#269;ára ze zorného pole.<br>
+<br>
+Dalším problémem bylo, že pokud bylo nerovnom&#283;rné osv&#283;tlení dráhy, vypadával 
+kame&#345;e obraz. Kamera má sice AGC, ale samoz&#345;ejm&#283;, že je schopna kompenzovat 
+rozdíly jasu jenom v&nbsp;ur&#269;itých mezích. Kupodivu nebyl problém v&nbsp;tunelu, kde si 
+robot svítí, ale velký problém byl s&nbsp;denním sv&#283;tlem, pokud p&#345;icházelo pouze z&nbsp;jednoho 
+sm&#283;ru.<br>
+<br>
+Konstruk&#269;ní &#345;ešení, které následovalo, bylo dopln&#283;ní dvou modrých &#269;idel po 
+stranách robota na sledování &#269;áry. &#268;idla byla umíst&#283;na tak, že vid&#283;la &#269;áru, až 
+když &#269;ára byla mimo zorné pole kamery a uplat&#328;ovala se pouze v&nbsp;p&#345;ípad&#283;, že 
+kamera &#269;áru nevidí. To velmi zvýšilo spolehlivost sledování &#269;áry. Zárove&#328; jsme 
+tato &#269;idla použili pro op&#283;tovné vyhledání &#269;áry po objetí cihly, protože jsme se 
+báli pro tento úkol použít kameru, protože po dobu objížd&#283;ní cihly kamera nevidí 
+kontrastní obrázek (nevidí &#269;áru) a díky AGC by mohla zaznamenat stín nebo špínu 
+na trati jako &#269;áru. <br>
+<br>
+Na objížd&#283;ní cihly byl robot Camerus vybaven odometrií na pravém kole. Využili 
+jsme otvor&#367; ve v&#283;tším kole p&#345;evodovky a IR závory z&nbsp;tiskárny. Citlivost 
+o<span lang="en-us">d</span>ometrie nebyla velká (4 impulzy na jednu otá&#269;ku kole&#269;ka (12,6mm)).<br>
+&nbsp;</font></p>
+<p align="left"><b><font face="Times New Roman" size="4">Jak jsme jeli „ladit“ do Vídn&#283;</font></b></p>
+<p align="left"><font face="Times New Roman">Vše pot&#345;ebné bylo naprogramováno, robot sledoval &#269;áru. P&#345;erušení ned&#283;lalo 
+problémy, prost&#283; byl výpadek obrazu a robot pokra&#269;oval v&nbsp;p&#367;vodním sm&#283;ru p&#345;ed 
+p&#345;erušením. Cihla byla &#345;ešena pomocí odometrie. Takto vybaveni jsme odjeli do 
+Vídn&#283; na Robot Challenge 2007. &#344;ekli jsme si, že to tam odladíme, protože jsou 
+tam jednodušší podmínky než v&nbsp;Bratislav&#283; (alespo&#328; na první pohled, robot m&#367;že 
+být v&#283;tší a tunel je také v&#283;tší, takže robot nemusí jet tak p&#345;esn&#283;).<br>
+<br>
+Rozhodnutí ladit robota na Robot Challenge se ukázalo jako správné. Podmínky 
+totiž byly náro&#269;né. Bodové osv&#283;tlení, dráha složená z&nbsp;desek s&nbsp;mezerami, styl 
+sout&#283;že play-off.<br>
+<br>
+Camerus ur&#269;it&#283; jezdil nejrychleji, ale nedokázal objet cihlu! Jednou se stalo, 
+že uvid&#283;l mezeru mezi deskami, podruhé mu z&#345;ejm&#283; proklouzlo kole&#269;ko s&nbsp;odometrií, 
+prost&#283; katastrofa! Alespo&#328;, že byl t&#345;etí v&nbsp;paralelním slalomu, to jsme mu ale 
+zavinili my, protože jsme mu p&#345;i zkoušení objetí cihly stáhli výkon motor&#367; a pak 
+jsme na to zapomn&#283;li. Za t&#345;etí místo tedy nemohl robot, ale lidský faktor.<br>
+<br>
+&nbsp;</font></p>
+<p align="center"><font face="Times New Roman"><a href="pic/image017.jpg">
+<img border="0" src="pic/image017_small.jpg" xthumbnail-orig-image="pic/image017.jpg"></a></font></p>
+<p align="center"><font face="Times New Roman">Obr<span lang="en-us">.</span> 8: Robot Challenge 2007, Parallel Slalom. Robot 
+Camerus na dráze &#269;íslo 1. Na dráze jsou patrné stíny od bodového osv&#283;tlení.<br>
+&nbsp;</font></p>
+<p align="center"><font face="Times New Roman"><a href="pic/image019.jpg">
+<img border="0" src="pic/image019_small.jpg" xthumbnail-orig-image="pic/image019.jpg"></a><span lang="en-us">
+</span><a href="pic/P3180028.JPG">
+<img border="0" src="pic/P3180028_small.JPG" xthumbnail-orig-image="pic/P3180028.JPG"></a><br>
+<br>
+Obr<span lang="en-us">.</span> 9: Robot Camerus na Robot Challenge 2007. Robot 
+nemá dostatek &#269;idel na bezpe&#269;né objetí p&#345;ekážky.<br>
+&nbsp;</font></p>
+<p align="left"><font face="Times New Roman">Jednozna&#269;n&#283; se ukázalo, že objížd&#283;t p&#345;ekážku „naslepo“ není dobrá strategie a 
+zejména, pokud je odometrie na hnané náprav&#283;.<br>
+&nbsp;</font></p>
+<p align="left"><font face="Times New Roman" size="4"><b>Co s&nbsp;cihlou?</b></font></p>
+<p align="left"><font face="Times New Roman">Další vývoj jsme v&#283;novali objížd&#283;ní cihly za pomoci &#269;idel. Jaká &#269;idla ale použít? 
+M&#283;li jsme špatné zkušenosti s&nbsp;IR &#269;idly s&nbsp;3Orbise a roboty s&nbsp;ultrazvukem jsme 
+zase na minulých ro&#269;nících vid&#283;li, že si spletli tunel s&nbsp;cihlou, p&#345;ípadn&#283; 
+nevid&#283;li cihlu, pokud se k&nbsp;ní blížili zešikma.<br>
+<br>
+Nev&#283;d&#283;li jsme co s&nbsp;tím a tak jsme za&#269;ali zkoušet. M&#283;&#345;ili jsme, co „vidí“ 
+ultrazvuk a co r&#367;zná optická &#269;idla. P&#345;i m&#283;&#345;ení se ukázaly všechny p&#345;edpokládané 
+problémy. Ultrazvuk vidí kde co, jenom ne cihlu, když je šikmo. IR sníma&#269; vidí 
+cihlu sice spolehliv&#283;, ale stejn&#283; dob&#345;e jako velkou bílou ze&#271; n&#283;kolik metr&#367; 
+daleko. Nakonec byla pro cihlu zvolena kombinace sedmi senzor&#367;. Skute&#269;n&#283; &#269;tete 
+dob&#345;e, sedmi! Jeden IR senzor vp&#345;edu na detekci p&#345;iblížení se k&nbsp;cihle. Funguje 
+na principu triangulace. IR vysílací dioda má úzkou hliníkovou trubi&#269;kou zúžen 
+paprsek, aby nedocházelo k&nbsp;jeho integraci na velké vzdálené ploše. Další dva 
+senzory jsou mikrospína&#269;e na mechanickém nárazníku, kdyby se stalo, že 
+triangula&#269;ní &#269;idlo cihlu p&#345;ehlédne. To se m&#367;že stát v&nbsp;prudké zatá&#269;ce. Z&nbsp;boku 
+jsou pak ultrazvukový senzor a dálkom&#283;r s&nbsp;&#269;ervenou LED. Tyto &#269;idla udržují 
+konstantní vzdálenost od cihly p&#345;i jejím objížd&#283;ní. K&nbsp;tomu ješt&#283; již zmín&#283;ná 
+odometrie na pravém kole&#269;ku, která zajiš&#357;uje prudkou zatá&#269;ku doleva jakmile je 
+cihla detekována a nakonec kompas, který zabra&#328;uje, aby se robot vracel zp&#283;t po 
+trati (to se m&#367;že stát, protože mezi p&#345;edním &#269;idlem a bo&#269;ními &#269;idly je slepý 
+úhel).<br>
+<br>
+P&#345;idání dalších &#269;idel se neobešlo bez konstruk&#269;ních problém&#367;. Bo&#269;ní LED &#269;idlo se 
+ukázalo jako málo citlivé a bylo to z&#345;ejm&#283; zp&#367;sobeno tím, že se jedná o 
+pr&#367;myslové &#269;idlo, které je normáln&#283; napájeno nap&#283;tím 12 až 48V. S&nbsp;naším 
+napájecím nap&#283;tím 7,2V a to ješt&#283; ob&#269;as, nebylo moc spokojeno. Byl tady p&#345;idán 
+další m&#283;ni&#269; nahoru na 12V. Byl použit m&#283;ni&#269; ze staré sí&#357;ové karty.<br>
+&nbsp;</font></p>
+<p align="left"><font face="Times New Roman" size="4"><b>Poslední weekend p&#345;ed sout&#283;ží</b></font></p>
+<p align="left"><font face="Times New Roman">P&#345;idání kompasu na I2C sb&#283;rnici si vyžádalo p&#345;eadresaci kamery, protože kamera a 
+kompas m&#283;ly na I2C sb&#283;rnici stejnou adresu a adresa kompasu se nedala zm&#283;nit. To 
+kupodivu byl velký problém, který jsme už &#345;ešili poslední weekend p&#345;ed sout&#283;ží a 
+vynutil si tak zásadní zásah jako rozebrání objektivu kamery, což znamenalo 
+pe&#269;livé &#269;išt&#283;ní pouzdra &#269;ipu kamery, protože p&#345;ípadné smítko na pouzd&#345;e &#269;ipu by 
+m&#283;lo p&#345;i sout&#283;ži fatální následky. &#268;ip kamery sice p&#345;eadresaci umí, ale bylo 
+nutné p&#345;ipojit vývod MULT (47) na <span lang="en-us">log_1 </span>a na to kupodivu na plošném spoji kamery 
+nebylo pamatováno, p&#345;esto, že na plošném spoji jsou plošky na odpory, které 
+umož&#328;ují zm&#283;nu adresy.<br>
+&nbsp;</font></p>
+<p align="center"><font face="Times New Roman"><a href="pic/image021.jpg">
+<img border="0" src="pic/image021_small.jpg" xthumbnail-orig-image="pic/image021.jpg"></a></font></p>
+<p align="center"><font face="Times New Roman">Obr<span lang="en-us">.</span> 10: Propojka na PCB kamery umož&#328;ující její 
+p&#345;eadresaci.<br>
+&nbsp;</font></p>
+<p align="left"><font face="Times New Roman">Poslední weekend p&#345;ed sout&#283;ží nás napadlo ješt&#283; jednou projít seznam problém&#367;, 
+které jsme si poznamenali v&nbsp;pr&#367;b&#283;hu lo&#328;ské sout&#283;že. Hned na za&#269;átku tam bylo: „Zkontrolovat, 
+jestli neprokluzují kole&#269;ka na h&#345;ídeli.“ Prokluzovaly. Zkusili jsme je p&#345;ilepit 
+anaerobním lepidlem. Výsledek byl, že se zalepily h&#345;ídelky do ložisek a kole&#269;ka 
+prokluzovala dál. Zkusili jsme je p&#345;ilepit epoxidem. Nanešt&#283;stí nám trochu 
+epoxidu z&#345;ejm&#283; nateklo do ložisek a kole&#269;ka se zase utrhla. Poslední weekend 
+p&#345;ed sout&#283;ží jsme tedy m&#283;li zatuhlé p&#345;evodovky a kole&#269;ka prokluzovala. Snažili 
+jsme se do h&#345;ídelek vyvrtat dírky a dát tam kolík, ale vrták v&#367;bec nitridovanou 
+ocel z&nbsp;CD mechanik nebral. Nakonec jsme do h&#345;ídelek pouze vypilovali drážky a 
+op&#283;t jsme je zalili epoxidem. Jestli neprokluzují, jsme pro jistotu už 
+nezkoušeli.<br>
+<br>
+Ješt&#283; bylo nutné znovu zab&#283;hnout p&#345;evodovky, to jsme d&#283;lali p&#345;es noc z&nbsp;pond&#283;lí 
+na úterý (IstRobot bývá ve st&#345;edu a my tam obvykle jedeme v&nbsp;úterý dopoledne). 
+Motory se to&#269;ily do rána do poslední chvíle p&#345;ed naložením robota do auta.<br>
+&nbsp;</font></p>
+<p align="left"><font face="Times New Roman" size="4"><b>Noc p&#345;ed sout&#283;ží</b></font></p>
+<p align="left"><font face="Times New Roman">„Kdyby nebylo poslední noci, tak není žádný projekt dokon&#269;en.“ Odpoledne jsme 
+p&#345;ijeli do Bratislavy na ubytovnu, rozložili dráhy a za&#269;ali ladit poslední &#345;ádky 
+programu. V&nbsp;našem p&#345;ípad&#283; to m&#283;lo být zpracování logu z&nbsp;jízdy.<br>
+<br>
+A v&#367;bec to nejezdilo. Robot m&#283;l malý výkon v&nbsp;levoto&#269;ivé zatá&#269;ce, p&#345;i objížd&#283;ní 
+cihly se dokonce ob&#269;as zastavil. No jasn&#283;, &#345;ekli jsme si, jsou stále zatuhlé 
+p&#345;evodovky, zm&#283;nili jsme pár konstant v&nbsp;programu a jakš takš to zase jezdilo. 
+Situace se ale o p&#367;lnoci zase zhoršila a za&#269;al smrd&#283;t H-m&#367;stek. Vym&#283;nili jsme 
+tedy H-m&#367;stek a nepomohlo to. Vym&#283;nili jsme tedy motor a pomohlo to! Prost&#283; jsme 
+neustálým lad&#283;ním programu a zkoušením zni&#269;ili jeden motor! Vrátili jsme tedy do 
+robota p&#367;vodní H-m&#367;stek (asi tak v&nbsp;jednu hodinu ráno) a zase to nejelo. M&#283;&#345;ením 
+jsme pak zjistili dv&#283; v&#283;ci, jednak byly p&#345;es pájecí lak odizolovány zemnící 
+šrouby na plošném spoji H-m&#367;stku a tak všechen proud tekl p&#345;es h&#345;ebínkový 
+konektor a pak tam ješt&#283; byl zkrat p&#345;es jeden tranzistor H-m&#367;stku, takže jeden 
+motor nereverzoval. P&#345;edstavte si, že tyto závady byly vykompenzovány 
+regulátorem v&nbsp;software a že s&nbsp;nimi byl Camerus na Robot Challenge t&#345;etí!<br>
+<br>
+Pak už jenom sta&#269;ilo doprogramovat tu logovací proceduru (p&#345;episovala pam&#283;&#357;). A 
+kolem páté hodiny ranní byl robot p&#345;ipraven na sout&#283;ž.<br>
+&nbsp;</font></p>
+<p align="left"><font face="Times New Roman" size="4"><b>IstRobot 2007</b></font></p>
+<p align="left"><font face="Times New Roman">IstRobot 2007 nás skute&#269;n&#283; p&#345;ekvapil, byla na n&#283;m z&nbsp;našeho pohledu nejsložit&#283;jší 
+dráha, jakou jsme kdy vid&#283;li. Extrémn&#283; dlouhé p&#345;erušení, navíc v&nbsp;inflexním bod&#283; 
+(to nás v&#367;bec nenapadlo, že je možné), cihla hned za pravoúhlou zatá&#269;kou (sotva 
+robot vyjede ze zatá&#269;ky, bác, a je tu cihla), viz Obrázek 11. </font></p>
+<p align="left">&nbsp;</p>
+<p align="center"><font face="Times New Roman"><a href="pic/image023.jpg">
+<img border="0" src="pic/image023_small.jpg" xthumbnail-orig-image="pic/image023.jpg"></a></font></p>
+<p align="center"><font face="Times New Roman">Obr<span lang="en-us">.</span> 11: IstRobot 2007 – tvar dráhy.</font></p>
+<p align="left"><font face="Times New Roman">Obtížnost trati se 
+ukázala hned v&nbsp;první jízd&#283;, Camerus vypadnul na p&#345;erušení. V&nbsp;druhé jízd&#283; jsme 
+snížili výkon motor&#367;, zde ale zase hrozilo, že se robot nerozjede, pokud n&#283;kde (nap&#345;íklad 
+p&#345;i objížd&#283;ní cihly) výrazn&#283; zpomalí. Robot jel plynuleji, p&#345;esto vyjel v&nbsp;p&#345;erušení 
+(to dá rozum, protože kopíroval tvar dráhy p&#345;ed p&#345;erušením), vyhnul se tunelu, 
+znovu našel dráhu (to fungovalo dob&#345;e) a na podruhé projel. Byl to úsp&#283;ch, ale 
+velká &#269;asová ztráta a navíc si robot špatn&#283; zapamatoval dráhu pro další jízdu, 
+protože bloudil.</font></p>
+<p align="left"><font face="Times New Roman">Programovali jsme místo ob&#283;da a nakonec jsme to p&#345;erušení vy&#345;ešili. Prost&#283; jsme 
+zohlednili, že dráha za p&#345;erušením m&#367;že pokra&#269;ovat i na druhou stranu. Zní to 
+jednoduše, ale úprava programu nebyla tak jednoduchá, viz sout&#283;žní verzi 
+<a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&path=/Designs/ROBOTS/Camerus/sw/#_Designs_ROBOTS_Camerus_sw_">firmware</a>.</font></p>
+<p align="left"><font face="Times New Roman">Finálová jízda prob&#283;hla bez 
+problém&#367;, robot sice jel na mén&#283; jak polovinu regula&#269;ního rozsahu a bez našeho 
+zásahu by se s&nbsp;dráhou dob&#345;e nevypo&#345;ádal, ale jsme rádi, že dojel a nakonec 
+stejn&#283; za to nemohl robot, ale my, že jsme mu naprogramovali, že dráha za 
+p&#345;erušením nem&#367;že vést na druhou stranu. Nakonec se poda&#345;ilo s&nbsp;robotem s&nbsp;&#269;asem 
+12,5s ud&#283;lat „rekord trati“ <span lang="en-us">;-)</span><br>
+&nbsp;</font></p>
+<p align="center"><font face="Times New Roman"><a href="pic/image025.jpg">
+<img border="0" src="pic/image025_small.jpg" xthumbnail-orig-image="pic/image025.jpg"></a></font></p>
+<p align="center"><font face="Times New Roman">Obr<span lang="en-us">.</span>12: Robot Camerus - finální verze robota.<br>
+<br>
+&nbsp;</font></p>
+<p align="center"><a href="pic/index.2.gif">
+<img border="0" src="pic/index.1.gif" xthumbnail-orig-image="pic/index.2.gif"></a></p>
+<p align="center"><font face="Times New Roman">Obr<span lang="en-us">. </span>13: Blokové schéma propojení modul&#367; robota.<br>
+&nbsp;</font></p>
+<p align="left"><font face="Arial">Desky plošných spoj&#367; a popis jednotlivých modul&#367; robota naleznete na 
+<a href="http://www.mlab.cz/">http://www.mlab.cz/</a> 
+.<br>
+&nbsp;</font></p>
+<p align="left"><font face="Arial">Deska procesoru<br>
+<a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&path=/Modules/PIC16F87x/#_Modules_PIC16F87x_">http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=%2FModules%2FPIC16F87x%2F#_Modules_PIC16F87x_</a>
+<br>
+&nbsp;</font></p>
+<p align="left"><font face="Arial">H-m&#367;stky<br>
+<a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&path=/Modules/HBRIDGE/#_Modules_HBRIDGE_">http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=%2FModules%2FHBRIDGE%2F#_Modules_HBRIDGE_</a>
+<br>
+&nbsp;</font></p>
+<p align="left"><font face="Arial">LEDbar<br>
+<a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&path=/Modules/LEDbar/#_Modules_LEDbar_">http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=%2FModules%2FLEDbar%2F#_Modules_LEDbar_</a><br>
+&nbsp;</font></p>
+<p align="left"><font face="Arial">M&#283;ni&#269;<br>
+<a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&path=/Modules/PowerSupply/BATPOWER02A/#_Modules_PowerSupply_BATPOWER02A_">http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=%2FModules%2FPowerSupply%2FBATPOWER02A%2F#_Modules_PowerSupply_BATPOWER02A_</a><br>
+&nbsp;</font></p>
+<p align="left"><font face="Arial">IR modulátor<br>
+<a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&path=/Modules/TXIR/#_Modules_TXIR_">http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=%2FModules%2FTXIR%2F#_Modules_TXIR_</a><br>
+&nbsp;</font></p>
+<p align="left"><font face="Arial">Osv&#283;tlení dráhy<br>
+Chybí</font></p>
+<p align="left">&nbsp;</p>
+<p align="left"><font face="Arial">Univerzálka pro 7432<br>
+<a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&path=/Modules/UNI/UNIDIL1601A/#_Modules_UNI_UNIDIL1601A_">http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=%2FModules%2FUNI%2FUNIDIL1601A%2F#_Modules_UNI_UNIDIL1601A_</a><br>
+&nbsp;</font></p>
+<p align="left"><font face="Arial">Trimry<br>
+<a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&path=/Modules/TRIMQUAD01A/#_Modules_TRIMQUAD01A_">http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=%2FModules%2FTRIMQUAD01A%2F#_Modules_TRIMQUAD01A_</a><br>
+&nbsp;</font></p>
+<p align="left"><font face="Arial">Dokumentace k&nbsp;použitému kamerovému &#269;ipu je na 
+<a href="http://www.cmucam.org/attachment/wiki/Documentation/OV6620.PDF">http://www.cmucam.org/attachment/wiki/Documentation/OV6620.PDF</a> 
+.<br>
+&nbsp;</font></p>
+<p align="left"><font face="Arial">Dokumentace k&nbsp;US senzoru je na 
+<a href="http://www.robot-electronics.co.uk/htm/srf08tech.shtml">http://www.robot-electronics.co.uk/htm/srf08tech.shtml</a> .<br>
+&nbsp;</font></p>
+<p align="left"><font face="Arial">Dokumentace ke kompasu je na<span lang="en-us">
+</span><a href="http://www.robot-electronics.co.uk/htm/cmps3doc.shtml">http://www.robot-electronics.co.uk/htm/cmps3doc.shtml</a> .<br>
+&nbsp;</font></p>
+<p align="left"><font face="Arial">Dokumentace k&nbsp;robotu 3Orbis, ze kterého Camerus vyšel, je na<span lang="en-us">
+</span>
+<a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&path=/Designs/ROBOTS/3Orbis/#_Designs_ROBOTS_3Orbis_">http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=%2FDesigns%2FROBOTS%2F3Orbis%2F#_Designs_ROBOTS_3Orbis_</a> 
+.</font></p>
+
+</body>
+
+</html>
