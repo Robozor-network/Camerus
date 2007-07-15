@@ -1,0 +1,57 @@
+[PROJECT]
+Target=camerus.HEX
+Development_Mode=
+Processor=0x876A
+ToolSuite=CCS
+
+[Directories]
+Include=C:\Program Files\PICC\devices\;C:\Program Files\PICC\Dr
+Library=
+LinkerScript=
+
+[Target Data]
+FileList=C:\dokumenty\svn\Kaklik\roboti\istrobot\camerus\SW\876\camerus.c
+BuildTool=C-COMPILER
+OptionString=+FM
+AdditionalOptionString=
+BuildRequired=1
+
+[camerus.c]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+
+[mru-list]
+1=camerus.c
+
+[Windows]
+0=0000 camerus.c 0 0 796 451 3 0
+
+[Opened Files]
+1=C:\dokumenty\svn\Kaklik\roboti\istrobot\camerus\SW\876\camerus.c
+2=C:\dokumenty\svn\Kaklik\roboti\istrobot\camerus\SW\876\camerus.h
+3=C:\Program Files\PICC\devices\16F876A.h
+4=C:\dokumenty\svn\Kaklik\roboti\istrobot\camerus\SW\876\objizdka_L.c
+5=C:\dokumenty\svn\Kaklik\roboti\istrobot\camerus\SW\876\diag.c
+6=
+[debugperif]
+selected=Analog/Digital Conv
+[debugram]
+autoread=1
+[debugeedata]
+autoread=1
+[debugbreak]
+count=0
+[pcwdebug]
+watchcol0=75
+[debugwatch]
+count=0
+[debugexpr]
+expr=
+sideeffects=0
+[Units]
+Count=1
+1=C:\dokumenty\svn\Kaklik\roboti\istrobot\camerus\SW\876\camerus.c (main)
