@@ -222,7 +222,7 @@ rozdíly jasu jenom v&nbsp;urèitıch mezích. Kupodivu nebyl problém v&nbsp;tunelu,
 robot svítí, ale velkı problém byl s&nbsp;denním svìtlem, pokud pøicházelo pouze 
 z&nbsp;jednoho smìru.<br>
 <br>
-Konstrukèní øešení, které následovalo, bylo doplnìní dvou modrıch èidel po 
+Konstrukèní øešení, které následovalo, bylo doplnìní dvou pùvodních modrıch èidel po 
 stranách robota na sledování èáry. Èidla byla umístìna tak, e vidìla èáru, a 
 kdy èára byla mimo zorné pole kamery a uplatòovala se pouze v&nbsp;pøípadì, e 
 kamera èáru nevidí. To velmi zvıšilo spolehlivost sledování èáry. Zároveò jsme 
@@ -243,7 +243,7 @@ robot pokraèoval v&nbsp;pùvodním smìru pøed pøerušením. Cihla byla øešena pomocí
 odometrie. Takto vybaveni jsme odjeli do Vídnì na Robot Challenge 2007. Øekli 
 jsme si, e to tam odladíme, protoe jsou tam jednodušší podmínky ne 
 v&nbsp;Bratislavì (alespoò na první pohled, robot mùe bıt vìtší a tunel je také 
-vìtší, take robot nemusí jet tak pøesnì).<br>
+vìtší, take menší robot nemusí jet tak pøesnì).<br>
 <br>
 Rozhodnutí ladit robota na Robot Challenge se ukázalo jako správné. Podmínky 
 toti byly nároèné. Bodové osvìtlení, dráha sloená z&nbsp;desek s&nbsp;mezerami, styl 
@@ -305,7 +305,7 @@ napájecím napìtím 7,2V a to ještì obèas, nebylo moc spokojeno. Byl tady pøidán
 další mìniè nahoru na 12V. Byl pouit mìniè ze staré síové karty.</font></p>
 <p align="left"><font face="Times New Roman">Samostatnım konstrukèním problémem 
 bylo umístìní kompasu. Nakonec musel bıt kompas umístìn nad všechny desky s 
-elektronikou a musel bıt orientován tak, aby èidla byla pod úhlem 45<span lang="en">° 
+elektronikou a musel bıt orientován tak, aby èidla kompasu byla pod úhlem 45<span lang="en">° 
 k </span>ose robota.<span lang="en"> Pokud byla èidla v ose robota, byl kompas 
 ovlivòován zbytkovım magnetickım polem v kovovıch (zejména eleznıch) èástech 
 robota.</span><br>
@@ -315,8 +315,8 @@ soutìí</b></font></p>
 <p align="left"><font face="Times New Roman">Pøidání kompasu na I2C sbìrnici si 
 vyádalo pøeadresaci kamery, protoe kamera a kompas mìly na I2C sbìrnici 
 stejnou adresu a adresa kompasu se nedala zmìnit. To kupodivu byl velkı problém, 
-kterı jsme u øešili poslední weekend pøed soutìí a vynutil si tak zásadní 
-zásah jako rozebrání objektivu kamery, co znamenalo peèlivé èištìní pouzdra 
+kterı jsme øešili a poslední weekend pøed soutìí a pøitom vyadoval tak zásadní 
+zásah jako rozebrání objektivu kamery, co znamenalo peèlivé èištìní pouzdra a
 èipu kamery, protoe pøípadné smítko na pouzdøe èipu by mìlo pøi soutìi fatální 
 následky. Èip kamery sice pøeadresaci umí, ale bylo nutné pøipojit vıvod MULT 
 (47) na <span lang="en-us">log_1 </span>a na to kupodivu na plošném spoji kamery 
@@ -331,10 +331,10 @@ umoòují zmìnu adresy.<br>
 <p align="left"><font face="Times New Roman">Poslední weekend pøed soutìí nás 
 napadlo ještì jednou projít seznam problémù, které jsme si poznamenali v&nbsp;prùbìhu 
 loòské soutìe. Hned na zaèátku tam bylo: „Zkontrolovat, jestli neprokluzují 
-koleèka na høídeli.“ Prokluzovaly. Zkusili jsme je pøilepit anaerobním lepidlem. 
+koleèka na høídeli.“ Prokluzovala... Zkusili jsme je pøilepit anaerobním lepidlem. 
 Vısledek byl, e se zalepily høídelky do loisek a koleèka prokluzovala dál. 
 Zkusili jsme je pøilepit epoxidem. Naneštìstí nám trochu epoxidu zøejmì nateklo 
-do loisek a koleèka se zase utrhla. Poslední weekend pøed soutìí jsme tedy 
+do loisek a koleèka se zase utrhla. Poslední nedìli pøed soutìí jsme tedy 
 mìli zatuhlé pøevodovky a koleèka prokluzovala. Snaili jsme se do høídelek 
 vyvrtat dírky a dát tam kolík, ale vrták vùbec nitridovanou ocel z&nbsp;CD mechanik 
 nebral. Nakonec jsme do høídelek pouze vypilovali dráky a opìt jsme je zalili 
@@ -354,8 +354,7 @@ A vùbec to nejezdilo. Robot mìl malı vıkon v&nbsp;levotoèivé zatáèce, pøi objíd
 cihly se dokonce obèas zastavil. No jasnì, øekli jsme si, jsou stále zatuhlé 
 pøevodovky, zmìnili jsme pár konstant v&nbsp;programu a jakš takš to zase jezdilo. 
 Situace se ale o pùlnoci zase zhoršila a zaèal smrdìt H-mùstek. Vymìnili jsme 
-tedy H-mùstek a nepomohlo to. Vymìnili jsme tedy motor a pomohlo to! Prostì jsme 
-neustálım ladìním programu a zkoušením znièili jeden motor! Vrátili jsme tedy do 
+tedy H-mùstek a nepomohlo to. Vymìnili jsme tedy motor a pomohlo to! (Pozdìjší analızou záznamu pouitého dílu bylo zjištìno, e motor è.2 byl pouit spolu s pùvodním podvozkem na vıstavì Vzdìlání a Øemeslo v Èeskıch Budìjovicích, kde byla levotoèivá tra a jeho provozní doba tak vzrostla o desítky hodin proti motoru è.1) Vrátili jsme tedy do 
 robota pùvodní H-mùstek (asi tak v&nbsp;jednu hodinu ráno) a zase to nejelo. Mìøením 
 jsme pak zjistili dvì vìci, jednak byly pøes pájecí lak odizolovány zemnící 
 šrouby na plošném spoji H-mùstku a tak všechen proud tekl pøes høebínkovı 
@@ -378,7 +377,7 @@ ze zatáèky, bác, a je tu cihla), viz Obrázek 11. </font></p>
 <p align="center"><font face="Times New Roman">Obr<span lang="en-us">.</span> 
 11: IstRobot 2007 – tvar dráhy.</font></p>
 <p align="left"><font face="Times New Roman">Potenciálním problémem byly 
-magnetické stojánky na kterıch stály èidla èasomíry. Magnetické pole nad dráhou 
+magnetické stojánky na kterıch stála èidla èasomíry. Magnetické pole nad dráhou 
 bylo díky nim znaènì nehomogenní (stojánek na Obr. 11 vlevo dole a dva stojánky 
 na startu). Robot vyuíval kompas pouze u cihly, a zøejmì byl stojánek 
 dostateènì daleko/blízko, e nakonec nevadil. Údaje z kompasu se zpracovávaly 
