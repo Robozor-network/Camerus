@@ -12,7 +12,7 @@
 </font><font size="4">Jak se dìlá robot na IstRobot<br>
 </font><br>
 <a href="mailto:kaklik@mlab.cz">kaklik@mlab.cz</a>; <a href="mailto:kakl@i.cz">
-kakl@i.cz</a><br>
+kakl@i.cz</a><span lang="en-us">; M. Novot</span>nı<br>
 &nbsp;</font></p>
 <p align="center"><a href="pic/image001.jpg">
 <img border="0" src="pic/image001_small.jpg" xthumbnail-orig-image="pic/image001.jpg"></a></p>
@@ -51,7 +51,7 @@ zpracování signálù ze senzorù na èáru pouili další samostatnı procesor. Toto
 øešení se však pozdìji neukázalo jako vıhodné, protoe ladit distribuovanı kód 
 bylo øádovì obtínìjší a navíc se musela naprogramovat komunikace mezi 
 procesory. Èasto se nám také stávalo, e jsme bìhem vıvoje do jednoho procesoru 
-nahráli kód pro druhı procesor, co kupodivu obèas trvalo urèitou dobu, ne jsme 
+nahráli kód pro druhı procesor, co kupodivu <span lang="en-us">v</span>dy trvalo urèitou dobu, ne jsme 
 na to pøišli.<br>
 &nbsp;</font></p>
 <p align="center"><font face="Times New Roman"><a href="pic/image007.jpg">
@@ -97,9 +97,9 @@ Tento problém by šel kompenzovat programovì, ale na soutìi se nepodaøilo
 program v&nbsp;èasové tísni správnì upravit. Robot tedy nakonec nedojel.<br>
 <br>
 Odhadovali jsme, e nám chybìl tak tıden na odladìní firmware, protoe v&nbsp;roce 
-2006 u nás byla povodeò a ztratili jsme tak nejménì jeden mìsíc veèerù na 
+2006 u nás byla povodeò a ztratili jsme tak nejménì jeden kalendáøní mìsíc veèerù/weekendù na 
 programování. Nyní s&nbsp;odstupem èasu vidíme, e co se tıká objetí cihly, chybìlo 
-mnohem více.<br>
+nám mnohem více.<br>
 &nbsp;</font></p>
 <p align="left"><font face="Times New Roman" size="4"><b>Robot Laserus</b></font></p>
 <p align="left"><font face="Times New Roman">Další verzí robota se shodnım 
@@ -129,7 +129,7 @@ softwarem, protoe se èára èetla v&nbsp;obou smìrech pohybu zrcátka. Jednou jsme
 dostali polohu èáry mìøenou z leva a jednou z prava.<br>
 <br>
 Druhı problém byl závanìjší. Protoe bylo pouito zaøízení na ètení èárového 
-kódu, snímali jsme vlastnì polohu jedné èáry ve scanovaném prostoru. V&nbsp;prudké 
+kódu, snímali jsme vlastnì polohu jedné èáry fiktivního èárového kódu ve scanovaném prostoru. V&nbsp;prudké 
 zatáèce však dochází k&nbsp;tomu, e èáru vidí snímaè šikmo a tak se relativnì 
 zvìtšuje její tlouška. Vnitøní elektronika snímaèe vyhodnotila tento stav, jako 
 e se nejedná o èárovı kód a èáru vyfiltrovala. To samozøejmì mìlo v&nbsp;ostré 
@@ -271,13 +271,13 @@ Obr<span lang="en-us">.</span> 9: Robot Camerus na Robot Challenge 2007. Robot
 nemá dostatek èidel na bezpeèné objetí pøekáky.<br>
 &nbsp;</font></p>
 <p align="left"><font face="Times New Roman">Jednoznaènì se ukázalo, e objídìt 
-pøekáku „naslepo“ není dobrá strategie a zejména, pokud je odometrie na hnané 
+pøekáku „napùl naslepo“ není dobrá strategie a zejména, pokud je odometrie na hnané 
 nápravì.<br>
 &nbsp;</font></p>
 <p align="left"><font face="Times New Roman" size="4"><b>Co s&nbsp;cihlou?</b></font></p>
 <p align="left"><font face="Times New Roman">Další vıvoj jsme vìnovali objídìní 
 cihly za pomoci èidel. Jaká èidla ale pouít? Mìli jsme špatné zkušenosti s&nbsp;IR 
-èidly s&nbsp;3Orbise a roboty s&nbsp;ultrazvukem jsme zase na minulıch roènících vidìli, 
+èidly z&nbsp;3Orbise a roboty s&nbsp;ultrazvukem jsme zase na minulıch roènících vidìli, 
 e si spletli tunel s&nbsp;cihlou, pøípadnì nevidìli cihlu, pokud se k&nbsp;ní blíili 
 zešikma.<br>
 <br>
@@ -291,9 +291,8 @@ na principu triangulace. IR vysílací dioda má úzkou hliníkovou trubièkou zúen
 paprsek, aby nedocházelo k&nbsp;jeho integraci na velké vzdálené ploše. Další dva 
 senzory jsou mikrospínaèe na mechanickém nárazníku, kdyby se stalo, e 
 triangulaèní èidlo cihlu pøehlédne. To se mùe stát v&nbsp;prudké zatáèce. Z&nbsp;boku 
-jsou pak ultrazvukovı senzor a dálkomìr s&nbsp;èervenou LED. Tyto èidla udrují 
-konstantní vzdálenost od cihly pøi jejím objídìní. K&nbsp;tomu ještì ji zmínìná 
-odometrie na pravém koleèku, která zajišuje prudkou zatáèku doleva jakmile je 
+jsou pak ultrazvukovı senzor a on/off dálkomìr s&nbsp;èervenou LED. Tyto èidla udrují 
+konstantní vzdálenost od cihly pøi jejím objídìní. K&nbsp;tomu ještì ji zmínìná odometrie na pravém koleèku, která zajišuje prudkou zatáèku doleva jakmile je 
 cihla detekována a nakonec kompas, kterı zabraòuje, aby se robot vracel zpìt po 
 trati (to se mùe stát, protoe mezi pøedním èidlem a boèními èidly je slepı 
 úhel).<br>
@@ -338,9 +337,13 @@ do loisek a koleèka se zase utrhla. Poslední nedìli pøed soutìí jsme tedy
 mìli zatuhlé pøevodovky a koleèka prokluzovala. Snaili jsme se do høídelek 
 vyvrtat dírky a dát tam kolík, ale vrták vùbec nitridovanou ocel z&nbsp;CD mechanik 
 nebral. Nakonec jsme do høídelek pouze vypilovali dráky a opìt jsme je zalili 
-epoxidem. Jestli neprokluzují, jsme pro jistotu u nezkoušeli.<br>
+epoxidem. Jestli neprokluzují, jsme pro jistotu u nezkoušeli. </font></p>
+<p align="left"><font face="Times New Roman">Pøi manipulaci s pravou pøevodovkou 
+se podaøilo ulomit vıvod od IR závory na odometrii. Protoe nešla vymìnit (je 
+zalepená v pàevodovce)a nechtìli jsme mìnit celou pøevodovku, natavili jsme její 
+pouzdro pájkou a drátek pøiletovali na pahıl vıvodu.<br>
 <br>
-Ještì bylo nutné znovu zabìhnout pøevodovky, to jsme dìlali pøes noc z&nbsp;pondìlí 
+Po rozebrání bylo nutné pøevodovky nechat znovu zabìhnout, to jsme dìlali pøes noc z&nbsp;pondìlí 
 na úterı (IstRobot bıvá ve støedu a my tam obvykle jedeme v&nbsp;úterı dopoledne). 
 Motory se toèily do rána do poslední chvíle pøed naloením robota do auta.<br>
 &nbsp;</font></p>
@@ -354,13 +357,14 @@ A vùbec to nejezdilo. Robot mìl malı vıkon v&nbsp;levotoèivé zatáèce, pøi objíd
 cihly se dokonce obèas zastavil. No jasnì, øekli jsme si, jsou stále zatuhlé 
 pøevodovky, zmìnili jsme pár konstant v&nbsp;programu a jakš takš to zase jezdilo. 
 Situace se ale o pùlnoci zase zhoršila a zaèal smrdìt H-mùstek. Vymìnili jsme 
-tedy H-mùstek a nepomohlo to. Vymìnili jsme tedy motor a pomohlo to! (Pozdìjší analızou záznamu pouitého dílu bylo zjištìno, e motor è.2 byl pouit spolu s pùvodním podvozkem na vıstavì Vzdìlání a Øemeslo v Èeskıch Budìjovicích, kde byla levotoèivá tra a jeho provozní doba tak vzrostla o desítky hodin proti motoru è.1) Vrátili jsme tedy do 
+tedy H-mùstek a nepomohlo to. Vymìnili jsme tedy motor a pomohlo to! (Pozdìjší analızou záznamu pouitého dílu bylo zjištìno, e motor è.2 byl pouit spolu s pùvodním podvozkem na vıstavì Vzdìlání a Øemeslo v Èeskıch Budìjovicích, kde byla levotoèivá tra a jeho provozní doba tak vzrostla o desítky hodin proti motoru è.1<span lang="en">&nbsp;.</span>) 
+Po vımìnì motoru jsme vrátili do 
 robota pùvodní H-mùstek (asi tak v&nbsp;jednu hodinu ráno) a zase to nejelo. Mìøením 
 jsme pak zjistili dvì vìci, jednak byly pøes pájecí lak odizolovány zemnící 
 šrouby na plošném spoji H-mùstku a tak všechen proud tekl pøes høebínkovı 
 konektor a pak tam ještì byl zkrat pøes jeden tranzistor H-mùstku, take jeden 
 motor nereverzoval. Pøedstavte si, e tyto závady byly vykompenzovány 
-regulátorem v&nbsp;software a e s&nbsp;nimi byl Camerus na Robot Challenge tøetí!<br>
+jednak regulátorem v&nbsp;software a také koncepcí podvozku, a e s&nbsp;nimi byl Camerus na Robot Challenge tøetí!<br>
 <br>
 Pak u jenom staèilo doprogramovat tu logovací proceduru (pøepisovala pamì). A 
 kolem páté hodiny ranní byl robot pøipraven na soutì.<br>
