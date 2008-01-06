@@ -1,0 +1,766 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title> Camerus </title>
+    <meta name="keywords" content="MLAB čárový robot Camerus">
+    <meta name="description" content="Čárový robot Camerus">
+    <!-- AUTOINCLUDE START "Page/Head.cs.ihtml" DO NOT REMOVE -->
+    <link rel="StyleSheet" href="../../../../../Web/CSS/MLAB.css" type="text/css" title="MLAB základní styl">
+    <link rel="StyleSheet" href="../../../../../Web/CSS/MLAB_Print.css" type="text/css" media="print">
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../../Web/PIC/MLAB.ico">
+    <script type="text/javascript" src="../../../../../Web/JS/MLAB_Menu.js"></script>
+    <!-- AUTOINCLUDE END -->
+    <style type="text/css">
+      p.Obrazek {text-align: center}
+    </style>
+
+  </head>
+
+  <body lang="cs">
+
+    <!-- AUTOINCLUDE START "Page/Header.cs.ihtml" DO NOT REMOVE -->
+    <!-- ============== HLAVICKA ============== -->
+    <div class="Header">
+      <script type="text/javascript">
+      <!--
+        SetRelativePath("../../../../../");
+        DrawHeader();
+      // -->
+      </script>
+      <noscript>
+        <p><b> Pro zobrazení (vložení) hlavičky je potřeba JavaScript </b></p>
+      </noscript>
+    </div>
+    <!-- AUTOINCLUDE END -->
+
+    <!-- AUTOINCLUDE START "Page/Menu.cs.ihtml" DO NOT REMOVE -->
+    <!-- ============== MENU ============== -->
+    <div class="Menu">
+      <script type="text/javascript">
+      <!--
+        SetRelativePath("../../../../../");
+        DrawMenu();
+      // -->
+      </script>
+      <noscript>
+        <p><b> Pro zobrazení (vložení) menu je potřeba JavaScript </b></p>
+      </noscript>
+    </div>
+    <!-- AUTOINCLUDE END -->
+
+    <!-- ============== TEXT ============== -->
+    <div class="Text">
+
+      <p class="Title">
+        Robot CAMERUS
+      </p>
+
+      <p class="Autor">
+        <a href="mailto:kaklik@mlab.cz">kaklik@mlab.cz</a>;
+        <a href="mailto:kakl@i.cz">kakl@i.cz</a>
+        M. Novotný
+      </p>
+
+      <p class="Subtitle">
+        Jak se dělá robot na IstRobot
+      </p>
+
+
+      <p class="Subtitle">
+        <a href="Pictures/image001.jpg"><img src="Pictures/image001_small.jpg" alt="Obrázek robotu"></a>
+      </p>
+      
+      <h1> Úvodem </h1>
+      
+      <p>
+        Tato dokumentace popisuje konstrukci robota Camerus, který byl
+        zkonstruován pro soutěž IstRobot pro kategorii Stopár
+        (<a href="http://www.robotika.sk/contest/">http://www.robotika.sk/contest/</a>).
+      </p>
+      
+      <p>
+        Snažili jsme se technickou dokumentaci pojmout poněkud netradičně.
+        Kromě popisu finální verze robota zde naleznete chronologický popis
+        jeho vývoje a popis všech slepých uliček. Doufáme, že takováto forma
+        dokumentace bude mít pro naše následovníky větší hodnotu než pouhý
+        návod na zopakování konstrukce.
+      </p>
+
+      <h1> První pokusy </h1>
+
+      <h2> Robot 3Orbis </h2>
+
+      <p>
+        Vývoj robota Camerus začal před více jak dvěma roky vývojem robota
+        3Orbis. Robot 3Orbis měl mít novou revoluční koncepci podvozku. Použili
+        jsme tříkolý podvozek, který měl dvě hnaná kola, každé s&nbsp;nezávislým
+        motorem a třetí kolo, které mělo řízené zatáčení. Jednalo se tedy o
+        nonholonomní podvozek. Koncepci podvozku jsme nejdříve ověřovali se
+        dvěma senzory na čáru, jako to měly naši předchozí holonomní roboti.
+        To moc nefungovalo a proto jsme přidali další senzory, pomocí kterých
+        se diskrétně nastavoval úhel zatáčecího kolečka.
+      </p>
+      
+      <p class="Obrazek">
+        <a href="Pictures/image003.jpg"><img src="Pictures/image003_small.jpg" alt="Pohled na jízdu"></a>
+        <br>
+        Obr.1: První pokusy s&nbsp;tříkolým a třímotorovým robotem
+      </p>
+
+      <p  class="Obrazek">
+        <a href="Pictures/image005.jpg"><img src="Pictures/image005_small.jpg" alt="Baterie senzorů"></a>
+        <br>
+        Obr.2: Baterie senzorů na čáru
+      </p>
+      
+      <p>
+        Přidáním dalších senzorů na čáru jsme se dostali do problémů
+        s&nbsp;počtem vstupů použitého procesoru (PIC16F88). Tento problém jsme
+        vyřešili tak, že jsme na zpracování signálů ze senzorů na čáru použili
+        další samostatný procesor. Toto řešení se však později neukázalo jako
+        výhodné, protože ladit distribuovaný kód bylo řádově obtížnější a navíc
+        se musela naprogramovat komunikace mezi procesory. Často se nám také
+        stávalo, že jsme během vývoje do jednoho procesoru nahráli kód pro
+        druhý procesor, což kupodivu vždy trvalo určitou dobu, než jsme na to
+        přišli.
+      </p>
+      
+      <p class="Obrazek">
+        <a href="Pictures/image007.jpg"><img src="Pictures/image007_small.jpg"
+                                             alt="Přední náhon"></a>
+        <br>
+        Obr.&nbsp;3: Přední náhon; přidáno druhé patro na elektroniku
+      </p>
+      
+      <p>
+        Původní koncepce předpokládala hnaná kola vpředu a zatáčecí kolo vzadu.
+        Modelářské servo však nedokázalo dostatečně rychle zatáčet, přestože
+        bylo zpřevodováno do rychla převodem 1:2. Změnili jsme proto uspořádání
+        na hnanou nápravu vzadu a zatáčecí kolečko vpředu. To nám umožňovalo
+        „ostře řezat zatáčky“, ale objevily se další problémy. Podvozek se
+        v&nbsp;zatáčkách dostával do smyku a protože hmotnost čidel byla
+        nezanedbatelná, docházelo i k&nbsp;jeho naklápění a následně
+        k&nbsp;falešnému signálu z&nbsp;čidel, protože čidla nebyla držena
+        v&nbsp;konstantní vzdálenosti od povrchu.
+      </p>
+      
+      <p>
+        Pro 3Orbise byla vysoustružena duralová kola, pro která bylo plánováno
+        obutí „O“ kroužky. To se pak ukázalo jako nepoužitelné. „O“ kroužky se
+        nedokázaly udržet v&nbsp;drážkách na kolech. Původní kola byla tedy
+        nahrazena plastovými z&nbsp;dětské hračky. Kola měla menší průměr, což
+        zlepšilo převodový poměr, který byl pro vyrobené převodovky 5:1. Jako
+        obutí byly použity ustřižené prsty z&nbsp;latexových rukavic pro
+        domácnost. Jako obutí zatáčecího kolečka bylo použito pryžové těsnění
+        12x10x2. Na zatáčecí kolečko bylo obuto tak, že se jelo po hraně
+        těsnění.
+      </p>
+      
+      <p class="Obrazek">
+        <a href="Pictures/image009.jpg"><img src="Pictures/image009_small.jpg"
+                                             alt="Zadní náhon"></a>
+        <br>
+        Obr.4: Robot 3Orbis. Zadní náhon a menší kolečka z&nbsp;autobusu od
+        syna pana Hronka.<br>
+        Je vidět čidlo na hledání hrany cihly.
+      </p>
+      
+      <p>
+        Pro detekci a objíždění cihly byly na robotovi namontovány IR senzory.
+        Jeden měl detekovat překážku na dráze a zbylé dva měly sloužit pro její
+        objetí. Objetí cihly pomocí IR senzorů jsme však nedokázali odladit.
+        Objíždění nebylo spolehlivé a tak robot nakonec objížděl cihlu
+        naslepo.
+      </p>
+      
+      <p>
+        Při soutěži se objevil nečekaný problém, kvůli kterému robot nakonec
+        nedojel. Soutěžní dráha je tvořena dvěma deskami. Desky nejsou dokonale
+        slícovány a tak mezi nimi vzniká tmavá mezera. Tato mezera byla na
+        soutěžní dráze přelepena bílou lepicí páskou. Bohužel čidla na čáru,
+        které robot používal, vyhodnocovala bílou lepicí pásku jako černou
+        (čidla pracují blízko ultrafialové oblasti). Tento problém by šel
+        kompenzovat programově, ale na soutěži se nepodařilo program
+        v&nbsp;časové tísni správně upravit. Robot tedy nakonec nedojel.
+      </p>
+      
+      <p>
+        Odhadovali jsme, že nám chyběl tak týden na odladění firmware, protože
+        v&nbsp;roce 2006 u nás byla povodeň a ztratili jsme tak nejméně jeden
+        kalendářní měsíc večerů/weekendů na programování. Nyní s&nbsp;odstupem
+        času vidíme, že co se týká objetí cihly, chybělo nám mnohem více.
+      </p>
+      
+      <h2> Robot Laserus </h2>
+
+      <p>
+        Další verzí robota se shodným podvozkem byl robot Laserus. Snahou bylo
+        odstranit „těžká“ čidla předsunutá před robota a tak odstranit
+        překlápění v&nbsp;ostrých zatáčkách. Řešením by bylo zvětšení dosahu
+        čidel na čáru tak, aby mohla být umístěna co nejblíže k&nbsp;ose otáčení
+        robota. Zároveň by se tím snížila obvodová setrvačná hmotnost robota.
+        Znovu jsme použili tříkolý podvozek s&nbsp;jedním řízeným zatáčecím
+        kolečkem, přestože na IstRobotu 2006 byla tato konfigurace diskutována
+        a autoři druhého robota s&nbsp;podobnou koncepcí se v&nbsp;diskusi
+        vyjádřili, že to nebyl dobrý nápad, že robot při větších rychlostech má
+        snahu se rozkmitávat. Řešení tohoto problému jsme viděli ve zjemnění
+        snímání čáry tak, aby se precizněji nastavovalo zatáčecí kolečko.
+        Napadlo nás použít laserovou čtečku čárového kódu a skutečně jsme
+        postavili funkčního robota (viz Obrázek 5), který dokázal, ale pomalu,
+        jezdit po čáře.
+      </p>
+      
+      <p class="Obrazek">
+        <a href="Pictures/image011.jpg"><img src="Pictures/image011_small.jpg"
+                                             alt="Robot Laserus"></a>
+        <br>
+        Obr.&nbsp;5: Robot Laserus. Na obrázku je vidět červená stopa LASERu.
+      </p>
+      
+      <p>
+        Problémy s&nbsp;touto konstrukcí byly dva. Pokud byl na dráze hrbol,
+        tak se v&nbsp;důsledku vibrací zmenšil rozkmit laseru, protože laser je
+        ve čtecím zařízení rozmítáván mechanicky zrcátkem, které vibruje a
+        velké stranové zrychlení při přejetí hrbolu způsobovalo, že
+        elektromagnetický mechanismus, který pohybuje zrcátkem vypadl
+        z&nbsp;rezonance. Tento problém by ovšem zřejmě šlo kompenzovat
+        softwarem, protože se čára četla v&nbsp;obou směrech pohybu zrcátka.
+        Jednou jsme tedy dostali polohu čáry měřenou z leva a jednou z
+        prava.
+      </p>
+      
+      <p>
+        Druhý problém byl závažnější. Protože bylo použito zařízení na čtení
+        čárového kódu, snímali jsme vlastně polohu jedné čáry fiktivního
+        čárového kódu ve scanovaném prostoru. V&nbsp;prudké zatáčce však
+        dochází k&nbsp;tomu, že čáru vidí snímač šikmo a tak se relativně
+        zvětšuje její tloušťka. Vnitřní elektronika snímače vyhodnotila tento
+        stav, jako že se nejedná o čárový kód a čáru vyfiltrovala. To
+        samozřejmě mělo v&nbsp;ostré zatáčce fatální následky. Dále jsme touto
+        cestou nepokračovali, přesto, že víme, že v&nbsp;závodě DARPA se často
+        používají laserové dálkoměry. Na soutěžních vozech je však vidět, že
+        konstruktéři také mají problémy s&nbsp;odtlumením vibrací.
+      </p>
+
+      <h1> Robot Camerus </h1>
+      
+      <p>
+        Znovu se vynořil nápad, použít pro snímání čáry kameru. To už nás
+        napadlo několikrát, ale když jsme nápad analyzovali, vždy se ukázalo, že
+        jednoduchým jednočipovým mikropočítačem nelze zpracovávat obraz kamery.
+        Druhým problémem je, že běžně dostupné kamery mají snímkový kmitočet
+        50Hz, což se nám zdálo na snímání čáry pomalé. Přesto jsme zakoupili
+        jednu kameru a začali jsme osciloskopem testovat, co tak kamera vidí a
+        jak by se to dalo zpracovat. Kupodivu jsme zjistili, že
+        s&nbsp;procesorem na 20MHz stíháme načíst jeden obrazový řádek asi
+        s&nbsp;polovičním rozlišením. To bylo povzbudivé a zaměřili jsme se
+        tímto směrem.
+      </p>
+      
+      <p>
+        Druhým problémem bylo, že kamera nesnímá kontrastní obraz. Jak se
+        vypořádat v&nbsp;jednočipovém počítači s&nbsp;tímto problémem, když
+        jeho výpočetní výkon stačí sotva na načtení řádku a ještě se musí
+        počítat regulace pro elektronický diferenciál? (Pro zvolenou koncepci
+        podvozku je nutné diferencovat otáčky motorů na hnaných nápravách.)
+      </p>
+      
+      <p>
+        Problém jsme vyřešili něčím, čemu jsme pracovně začali říkat „digitální
+        komparátor“. Jednoduše jsme pomocí logických hradel provedli OR třech
+        nejvyšších bitů jasového signálu z&nbsp;kamery. Všechno co bylo pod
+        0x1F bylo tedy černé a všechno nad bylo bílé. Expozici kamery pak bylo
+        nutné nastavit tak, aby nejsvětlejší černá čára, byla ještě černá. To
+        se udělalo snadno osciloskopem, ale pro závod bylo nutné vyvinout
+        nějakou strategii, jak robot provede určení expozice. Řešením byla
+        rutina „Expozimetr“, která postupně zvyšuje expoziční čas a hledá ve
+        snímku (samozřejmě, že v&nbsp;našem případě na jedné řádce) čáru
+        definované tloušťky. Vychází se z&nbsp;toho, že nejdříve při
+        podexponování je černý celý obrázek, pak se postupně obrázek vyjasňuje,
+        což je ovšem díky chybě apertury objektivu nerovnoměrné. Dalším
+        zvyšováním času expozice se nakonec objeví čára správné tloušťky, ta se
+        pak dále ztenčuje a nakonec je snímek přepálen a čára zmizí. Samozřejmě
+        se předpokládalo, že na startu robot čáru vidí a ta je před ním
+        přibližně uprostřed.
+      </p>
+      
+      <p>
+        První pokusy vypadaly velmi optimisticky, robot se držel čáry a vyjel
+        jenom občas. Zajímavé bylo, že robot dokázal jezdit jenom po dráze, kde
+        nebyly zatáčky doleva! Protože jsme neměli k&nbsp;dispozici obraz
+        z&nbsp;kamery, aby bylo možné zkontrolovat co kamera vidí, bylo nutné
+        tento problém řešit pouhou úvahou. Napadlo nás, že může docházet k
+        „vytrhávání obrazu“ na krajích snímku. Kompenzovalo se to tím, že se
+        zahazovaly okraje řádku a skutečně to pomohlo, robot spolehlivě, i když
+        pomalu, sledoval čáru. To byl velký úspěch, protože kdyby nám někdo
+        řekl před rokem, že to s&nbsp;kamerou a jednočipovým počítačem jde, a
+        že je to spolehlivé, asi by jsme mu nevěřili.
+      </p>
+      
+      <p>
+        Po prvotních úspěších jsme zkusili zrychlit jenže to nefungovalo, robot
+        vždy vypadl z&nbsp;dráhy, když se zatáčecí kolečko otočilo o velký
+        úhel. Napadlo nás, že to může být způsobeno proudovými špičkami, které
+        způsobuje motor serva. Pro stabilizaci napájení pro elektroniku byl
+        totiž použit lineární stabilizátor s&nbsp;velkým drop-outem. Proto jsme
+        vyvinuli měnič, který i při poklesu napětí baterií o 2V dokázal udržet
+        napětí pro řídící elektroniku a zejména kameru stabilní. Po tomto
+        vylepšení už robot dosahoval poměrně slušné rychlosti a nejzajímavější
+        bylo, že díky „velké“ rozlišovací schopnosti kamery (procesor dokázal
+        rozlišit asi 50 bodů) byla jízda v&nbsp;zatáčkách velmi plynulá.
+      </p>
+
+      <p>
+        Problém s&nbsp;tmou v&nbsp;tunelu byl vyřešen jednoduše tak, že si
+        robot celou cestu svítil. Na osvětlení dráhy byly použity červené LED.
+        Nevíme, jaká barva pro osvětlení dráhy je nejlepší, eventuelně, jestli
+        je lepší svítit bíle. S&nbsp;tím jsme už nestihli před soutěží
+        experimentovat.
+      </p>
+      
+      <p>
+        Protože použitý procesor PIC16F876A neumí násobit a vůbec jeho
+        výpočetní výkon není omračující (kdybychom ho ale měli před lety, tak
+        by jsme si určitě nestěžovali), byl celkem problém naprogramovat
+        elektronický diferenciál na hnanou nápravu. Nakonec se to vyřešilo
+        procedurou „jakonásobení“, která kombinací rotací a podmíněného sčítání
+        provádí rychle potřebný výpočet s&nbsp;uspokojivou přesností.
+      </p>
+      
+      <p class="Obrazek">
+        <a href="Pictures/image013.jpg"><img src="Pictures/image013_small.jpg"
+                                             alt="Osvětlení dráhy"></a>
+        <br>
+        Obr.&nbsp;6: Měnič v&nbsp;krabičce od čaje a primitivní osvětlení dráhy.
+      </p>
+      
+      <p class="Obrazek">
+        <a href="Pictures/image015.jpg"><img src="Pictures/image015_small.jpg"
+                                             alt="Robot přítel člověka"></a>
+        <br>
+        Obr.&nbsp;7: Robot, přítel člověka.
+      </p>
+      
+      <p>
+        Začali jsme tedy testovat pro sledování čáry asi nejobtížnější věc,
+        dlouhou rovinku a na konci pravoúhlou zatáčku. Při dalším zvyšování
+        rychlosti začal robot v&nbsp;takové zatáčce vypadávat. Ne, že by přímo
+        vyjel a nevrátil se na dráhu, ale poloměr zatáčení byl menší než poloměr
+        zatáčky a hrozilo tedy, že v&nbsp;Bratislavě spadne ze stolu. Udělali
+        jsme předpoklad, že je to způsobeno pomalým snímkovým kmitočtem kamery,
+        než si robot stačil všimnout, že je zatáčka ostrá, zmizela mu čára ze
+        zorného pole.
+      </p>
+      
+      <p>
+        Dalším problémem bylo, že pokud bylo nerovnoměrné osvětlení dráhy,
+        vypadával kameře obraz. Kamera má sice AGC, ale samozřejmě, že je
+        schopna kompenzovat rozdíly jasu jenom v&nbsp;určitých mezích. Kupodivu
+        nebyl problém v&nbsp;tunelu, kde si robot svítí, ale velký problém byl
+        s&nbsp;denním světlem, pokud přicházelo pouze z&nbsp;jednoho směru.
+      </p>
+      
+      <p>
+        Konstrukční řešení, které následovalo, bylo doplnění dvou původních
+        modrých čidel po stranách robota na sledování čáry. Čidla byla umístěna
+        tak, že viděla čáru, až když čára byla mimo zorné pole kamery a
+        uplatňovala se pouze v&nbsp;případě, že kamera čáru nevidí. To velmi
+        zvýšilo spolehlivost sledování čáry. Zároveň jsme tato čidla použili
+        pro opětovné vyhledání čáry po objetí cihly, protože jsme se báli pro
+        tento úkol použít kameru, protože po dobu objíždění cihly kamera nevidí
+        kontrastní obrázek (nevidí čáru) a díky AGC by mohla zaznamenat stín
+        nebo špínu na trati jako čáru.
+      </p>
+      
+      <p>
+        Na objíždění cihly byl robot Camerus vybaven odometrií na pravém kole.
+        Využili jsme otvorů ve větším kole převodovky a IR závory
+        z&nbsp;tiskárny. Citlivost odometrie nebyla velká (4 impulzy na jednu
+        otáčku kolečka (12,6mm)).
+      </p>
+
+      <h2> Jak jsme jeli „ladit“ do Vídně </h2>
+
+      <p>
+        Vše potřebné bylo naprogramováno, robot sledoval čáru. Přerušení
+        nedělalo problémy, prostě byl výpadek obrazu a robot pokračoval
+        v&nbsp;původním směru před přerušením. Cihla byla řešena pomocí
+        odometrie. Takto vybaveni jsme odjeli do Vídně na Robot Challenge 2007.
+        Řekli jsme si, že to tam odladíme, protože jsou tam jednodušší podmínky
+        než v&nbsp;Bratislavě (alespoň na první pohled, robot může být větší a
+        tunel je také větší, takže menší robot nemusí jet tak přesně).
+      </p>
+      
+      <p>
+        Rozhodnutí ladit robota na Robot Challenge se ukázalo jako správné.
+        Podmínky totiž byly náročné. Bodové osvětlení, dráha složená
+        z&nbsp;desek s&nbsp;mezerami, styl soutěže play-off.
+      </p>
+      
+      <p>
+        Camerus určitě jezdil nejrychleji, ale nedokázal objet cihlu! Jednou se
+        stalo, že uviděl mezeru mezi deskami, podruhé mu zřejmě proklouzlo
+        kolečko s&nbsp;odometrií, prostě katastrofa! Alespoň, že byl třetí
+        v&nbsp;paralelním slalomu, to jsme mu ale zavinili my, protože jsme mu
+        při zkoušení objetí cihly stáhli výkon motorů a pak jsme na to
+        zapomněli. Za třetí místo tedy nemohl robot, ale lidský faktor.
+      </p>
+      
+      <p>
+
+      <p class="Obrazek">
+        <a href="Pictures/image017.jpg"><img src="Pictures/image017_small.jpg"
+                                             alt="Robot Challenge 2007"></a>
+        <br>
+        Obr.&nbsp;8: Robot Challenge 2007, Parallel Slalom.
+        <br>
+        Robot Camerus na dráze číslo 1. Na dráze jsou patrné stíny od bodového
+        osvětlení.
+      </p>
+      
+      <p class="Obrazek">
+        <a href="Pictures/image019.jpg"><img src="Pictures/image019_small.jpg"
+                                             alt="Příprava"></a>
+        <a href="Pictures/P3180028.JPG"><img src="Pictures/P3180028_small.JPG"
+                                            alt="Jízda"></a>
+        <br>
+        Obr.&nbsp;9: Robot Camerus na Robot Challenge 2007.
+        <br>
+        Robot nemá dostatek čidel na bezpečné objetí překážky.
+      </p>
+      
+      <p>
+        Jednoznačně se ukázalo, že objíždět překážku „napůl naslepo“ není dobrá
+        strategie a zejména, pokud je odometrie na hnané nápravě.
+      </p>
+      
+      <h2> Co s&nbsp;cihlou? </h2>
+      
+      <p>
+        Další vývoj jsme věnovali objíždění cihly za pomoci čidel. Jaká čidla
+        ale použít? Měli jsme špatné zkušenosti s&nbsp;IR čidly z&nbsp;3Orbise
+        a roboty s&nbsp;ultrazvukem jsme zase na minulých ročnících viděli, že
+        si spletli tunel s&nbsp;cihlou, případně neviděli cihlu, pokud se
+        k&nbsp;ní blížili zešikma.
+      </p>
+
+      <p>
+        Nevěděli jsme co s&nbsp;tím a tak jsme začali zkoušet. Měřili jsme, co
+        „vidí“ ultrazvuk a co různá optická čidla. Při měření se ukázaly
+        všechny předpokládané problémy. Ultrazvuk vidí kde co, jenom ne cihlu,
+        když je šikmo. IR snímač vidí cihlu sice spolehlivě, ale stejně dobře
+        jako velkou bílou zeď několik metrů daleko. Nakonec byla pro cihlu
+        zvolena kombinace sedmi senzorů. Skutečně čtete dobře, sedmi! Jeden IR
+        senzor vpředu na detekci přiblížení se k&nbsp;cihle. Funguje na
+        principu triangulace. IR vysílací dioda má úzkou hliníkovou trubičkou
+        zúžen paprsek, aby nedocházelo k&nbsp;jeho integraci na velké vzdálené
+        ploše. Další dva senzory jsou mikrospínače na mechanickém nárazníku,
+        kdyby se stalo, že triangulační čidlo cihlu přehlédne. To se může stát
+        v&nbsp;prudké zatáčce. Z&nbsp;boku jsou pak ultrazvukový senzor a
+        on/off dálkoměr s&nbsp;červenou LED. Tyto čidla udržují konstantní
+        vzdálenost od cihly při jejím objíždění. K&nbsp;tomu ještě již zmíněná
+        odometrie na pravém kolečku, která zajišťuje prudkou zatáčku doleva
+        jakmile je cihla detekována a nakonec kompas, který zabraňuje, aby se
+        robot vracel zpět po trati (to se může stát, protože mezi předním
+        čidlem a bočními čidly je slepý úhel).
+      </p>
+      
+      <p>
+        Přidání dalších čidel se neobešlo bez konstrukčních problémů. Boční LED
+        čidlo se ukázalo jako málo citlivé a bylo to zřejmě způsobeno tím, že
+        se jedná o průmyslové čidlo, které je normálně napájeno napětím 12 až
+        48V. S&nbsp;naším napájecím napětím 7,2V a to ještě občas, nebylo moc
+        spokojeno. Byl tady přidán další měnič nahoru na 12V. Byl použit měnič
+        ze staré síťové karty.
+      </p>
+      
+      <p>
+        Samostatným konstrukčním problémem bylo umístění kompasu. Nakonec musel
+        být kompas umístěn nad všechny desky s elektronikou a musel být
+        orientován tak, aby čidla kompasu byla pod úhlem 45° k ose robota. Pokud
+        byla čidla v ose robota, byl kompas ovlivňován zbytkovým magnetickým
+        polem v kovových (zejména železných) částech robota.
+      </p>
+
+      <h2> Poslední weekend před soutěží </h2>
+
+      <p>
+        Přidání kompasu na I2C sběrnici si vyžádalo přeadresaci kamery, protože
+        kamera a kompas měly na I2C sběrnici stejnou adresu a adresa kompasu se
+        nedala změnit. To kupodivu byl velký problém, který jsme řešili až
+        poslední weekend před soutěží a přitom vyžadoval tak zásadní zásah jako
+        rozebrání objektivu kamery, což znamenalo pečlivé čištění pouzdra a čipu
+        kamery, protože případné smítko na pouzdře čipu by mělo při soutěži
+        fatální následky. Čip kamery sice přeadresaci umí, ale bylo nutné
+        připojit vývod MULT (47) na log_1 a na to kupodivu na plošném spoji
+        kamery nebylo pamatováno, přesto, že na plošném spoji jsou plošky na
+        odpory, které umožňují změnu adresy.
+      </p>
+
+      <p class="Obrazek">
+        <a href="Pictures/image021.jpg"><img src="Pictures/image021_small.jpg"
+                                             alt="Úprava kamery"></a>
+        <br>
+        Obr.&nbsp;10: Propojka na PCB kamery umožňující její přeadresaci.
+      </p>
+
+      <p>
+        Poslední weekend před soutěží nás napadlo ještě jednou projít seznam
+        problémů, které jsme si poznamenali v&nbsp;průběhu loňské soutěže.
+        Hned na začátku tam bylo: „Zkontrolovat, jestli neprokluzují kolečka na
+        hřídeli.“ Prokluzovala... Zkusili jsme je přilepit anaerobním lepidlem.
+        Výsledek byl, že se zalepily hřídelky do ložisek a kolečka prokluzovala
+        dál. Zkusili jsme je přilepit epoxidem. Naneštěstí nám trochu epoxidu
+        zřejmě nateklo do ložisek a kolečka se zase utrhla. Poslední neděli
+        před soutěží jsme tedy měli zatuhlé převodovky a kolečka prokluzovala.
+        Snažili jsme se do hřídelek vyvrtat dírky a dát tam kolík, ale vrták
+        vůbec nitridovanou ocel z&nbsp;CD mechanik nebral. Nakonec jsme do
+        hřídelek pouze vypilovali drážky a opět jsme je zalili epoxidem. Jestli
+        neprokluzují, jsme pro jistotu už nezkoušeli.
+      </p>
+      
+      <p>
+        Při manipulaci s pravou převodovkou se podařilo ulomit vývod od IR
+        závory na odometrii. Protože nešla vyměnit (je zalepená v pŕevodovce) a
+        nechtěli jsme měnit celou převodovku, natavili jsme její pouzdro pájkou
+        a drátek přiletovali na pahýl vývodu.
+      </p>
+      
+      <p>
+        Po rozebrání bylo nutné převodovky nechat znovu zaběhnout, to jsme
+        dělali přes noc z&nbsp;pondělí na úterý (IstRobot bývá ve středu a my
+        tam obvykle jedeme v&nbsp;úterý dopoledne). Motory se točily do rána do
+        poslední chvíle před naložením robota do auta.
+      </p>
+
+      <h2> Noc před soutěží </h2>
+      
+      <p>
+        „Kdyby nebylo poslední noci, tak není žádný projekt dokončen.“
+        Odpoledne jsme přijeli do Bratislavy na ubytovnu, rozložili dráhy a
+        začali ladit poslední řádky programu. V&nbsp;našem případě to mělo být
+        zpracování logu z&nbsp;jízdy.
+      </p>
+      
+      <p>
+        A vůbec to nejezdilo. Robot měl malý výkon v&nbsp;levotočivé zatáčce,
+        při objíždění cihly se dokonce občas zastavil. No jasně, řekli jsme si,
+        jsou stále zatuhlé převodovky, změnili jsme pár konstant
+        v&nbsp;programu a jakš takš to zase jezdilo. Situace se ale o půlnoci
+        zase zhoršila a začal smrdět H-můstek. Vyměnili jsme tedy H-můstek a
+        nepomohlo to. Vyměnili jsme tedy motor a pomohlo to! (Pozdější analýzou
+        záznamu použitého dílu bylo zjištěno, že motor č.2 byl použit spolu s
+        původním podvozkem na výstavě Vzdělání a Řemeslo v Českých
+        Budějovicích, kde byla levotočivá trať a jeho provozní doba tak
+        vzrostla o desítky hodin proti motoru č.1&nbsp;.) Po výměně motoru jsme
+        vrátili do robota původní H-můstek (asi tak v&nbsp;jednu hodinu ráno)
+        a zase to nejelo. Měřením jsme pak zjistili dvě věci, jednak byly přes
+        pájecí lak odizolovány zemnící šrouby na plošném spoji H-můstku a tak
+        všechen proud tekl přes hřebínkový konektor a pak tam ještě byl zkrat
+        přes jeden tranzistor H-můstku, takže jeden motor nereverzoval.
+        Představte si, že tyto závady byly vykompenzovány jednak regulátorem
+        v&nbsp;software a také koncepcí podvozku, a že s&nbsp;nimi byl Camerus
+        na Robot Challenge třetí!
+      </p>
+      
+      <p>
+        Pak už jenom stačilo doprogramovat tu logovací proceduru (přepisovala
+        paměť). A kolem páté hodiny ranní byl robot připraven na soutěž.
+      </p>
+      
+      <h2> IstRobot 2007 </h2>
+
+      <p>
+        IstRobot 2007 nás skutečně překvapil, byla na něm z&nbsp;našeho pohledu
+        nejsložitější dráha, jakou jsme kdy viděli. Extrémně dlouhé přerušení,
+        navíc v&nbsp;inflexním bodě (to nás vůbec nenapadlo, že je možné),
+        cihla hned za pravoúhlou zatáčkou (sotva robot vyjede ze zatáčky, bác,
+        a je tu cihla), viz Obrázek 11.
+      </p>
+      
+      <p class="Obrazek">
+        <a href="Pictures/image023.jpg"><img src="Pictures/image023_small.jpg"
+                                             alt="IstRobot 2007"></a>
+        <br>
+        Obr.&nbsp;11: IstRobot 2007 – tvar dráhy.
+      </p>
+      
+      <p>
+        Potenciálním problémem byly magnetické stojánky na kterých stála čidla
+        časomíry. Magnetické pole nad dráhou bylo díky nim značně nehomogenní
+        (stojánek na Obr.&nbsp;11 vlevo dole a dva stojánky na startu). Robot
+        využíval kompas pouze u cihly, a zřejmě byl stojánek dostatečně
+        daleko/blízko, že nakonec nevadil. Údaje z kompasu se zpracovávaly
+        diferenčně, takže nevadilo, že byla díky stojánkům odchylka v celkové
+        orientaci magnetického pole Země, podstatné bylo, aby nedocházelo k
+        velkým zakřivením pole v oblasti cihly. K čemuž, jak jsme změřili,
+        částečně docházelo, ale software se s tím vypořádal, když vážil údaje
+        ze všech čidel při objíždění překážky.
+      </p>
+      
+      <p>
+        Obtížnost trati se ukázala hned v&nbsp;první jízdě, Camerus vypadnul na
+        přerušení. V&nbsp;druhé jízdě jsme snížili výkon motorů, zde ale zase
+        hrozilo, že se robot nerozjede, pokud někde (například při objíždění
+        cihly) výrazně zpomalí. Robot jel plynuleji, přesto vyjel
+        v&nbsp;přerušení (to dá rozum, protože kopíroval tvar dráhy před
+        přerušením), vyhnul se tunelu, znovu našel dráhu (to fungovalo dobře) a
+        na podruhé projel. Byl to úspěch, ale velká časová ztráta a navíc si
+        robot špatně zapamatoval dráhu pro další jízdu, protože bloudil.
+      </p>
+      
+      <p>
+        Programovali jsme místo oběda a nakonec jsme to přerušení vyřešili.
+        Prostě jsme zohlednili, že dráha za přerušením může pokračovat i na
+        druhou stranu. Zní to jednoduše, ale úprava programu nebyla tak
+        jednoduchá, viz soutěžní verzi
+        <a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=/Designs/ROBOTS/Camerus/sw/#_Designs_ROBOTS_Camerus_sw_"
+           >firmware</a>.
+      </p>
+      
+      <p>
+        Finálová jízda proběhla bez problémů, robot sice jel na méně jak
+        polovinu regulačního rozsahu a bez našeho zásahu by se s&nbsp;dráhou
+        dobře nevypořádal, ale jsme rádi, že dojel a nakonec stejně za to nemohl
+        robot, ale my, že jsme mu naprogramovali, že dráha za přerušením nemůže
+        vést na druhou stranu. Nakonec se podařilo s&nbsp;robotem s&nbsp;časem
+        12,5s udělat „rekord trati“ ;-)
+      </p>
+
+      <p class="Obrazek">
+        <a href="Pictures/image025.jpg"><img src="Pictures/image025_small.jpg"
+                                             alt="Robot Camerus"></a>
+        <br>
+        Obr.&nbsp;12: Robot Camerus - finální verze robota.
+      </p>
+      
+      <p class="Obrazek">
+        <a href="Pictures/index.2.gif"><img src="Pictures/index.1.gif"
+                                            alt="Blokové schéma"></a>
+        <br>
+        Obr.&nbsp;13: Blokové schéma propojení modulů robota.
+      </p>
+      
+      <h1> Podklady </h1>
+      
+      <p>
+        Desky plošných spojů a popis jednotlivých modulů robota naleznete na
+        <a href="http://www.mlab.cz/">http://www.mlab.cz/</a>&nbsp;.
+      </p>
+
+      <h2 class="Small"> Deska procesoru </h2>
+      <p>
+        <a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=%2FModules%2FPIC%2FPIC16F87xSO2801A%2F#_Modules_PIC_PIC16F87xSO2801A_">
+        http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=/Modules/PIC/PIC16F87xSO2801A/#_Modules_PIC_PIC16F87xSO2801A_</a>
+        <a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=%2FModules%2FPIC%2FPIC16F87xDIL2801A%2F#_Modules_PIC_PIC16F87xDIL2801A_">
+        http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=/Modules/PIC/PIC16F87xDIL2801A/#_Modules_PIC_PIC16F87xDIL2801A_</a>
+      </p>
+      
+      <h2 class="Small"> H-můstky </h2>
+      
+      <p>
+        <a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=%2FModules%2FH_Bridge%2F#_Modules_H-Bridge_">
+        http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=/Modules/H_Bridge/#_Modules_H-Bridge_</a>
+      </p>
+
+      <h2 class="Small"> LEDbar </h2>
+      
+      <p>
+        <a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=%2FModules%2FHumanInterfaces%2FLEDbar%2F#_Modules_LEDbar_">
+        http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=/Modules/HumanInterfaces/LEDbar/#_Modules_LEDbar_</a>
+      </p>
+      
+      <h2 class="Small"> Měnič </h2>
+      
+      <p>
+        <a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=%2FModules%2FPowerSupply%2FBATPOWER02A%2F#_Modules_PowerSupply_BATPOWER02A_">
+        http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=/Modules/PowerSupply/BATPOWER02A/#_Modules_PowerSupply_BATPOWER02A_</a>
+      </p>
+      
+      <h2 class="Small"> IR modulátor </h2>
+      
+      <p>
+        <a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=%2FModules%2FCommIR%2FTXIR%2F#_Modules_CommIR_TXIR_">
+        http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=/Modules/CommIR/TXIR/#_Modules_CommIR_TXIR_</a>
+      </p>
+      
+      <h2 class="Small"> Osvětlení dráhy </h2>
+      
+      <p>
+        <a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=%2FDesigns%2FROBOTS%2FCamerus%2FLEDpanel%2F#_Designs_ROBOTS_Camerus_LEDpanel_">
+        http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=/Designs/ROBOTS/Camerus/LEDpanel/#_Designs_ROBOTS_Camerus_LEDpanel_</a>
+      </p>
+
+      <h2 class="Small"> Univerzálka pro 7432 </h2>
+
+      <p>
+        <a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=/Modules/Universal/UNIDIL1601A/">
+        http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=/Modules/Universal/UNIDIL1601A/</a>
+      </p>
+      
+      <h2 class="Small"> Modul trimrů </h2>
+      
+      <p>
+        <a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=%2FModules%2FHumanInterfaces%2FTRIMQUAD01A%2F#_Modules_TRIMQUAD01A_">
+        http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=/Modules/HumanInterfaces/TRIMQUAD01A/#_Modules_TRIMQUAD01A_</a>
+      </p>
+      
+      <h2 class="Small"> Dokumentace k&nbsp;použitému kamerovému čipu </h2>
+
+      <p>
+        <a href="http://www.cmucam.org/attachment/wiki/Documentation/OV6620.PDF">
+        http://www.cmucam.org/attachment/wiki/Documentation/OV6620.PDF</a>
+      </p>
+      
+      <h2 class="Small"> Dokumentace k&nbsp;US senzoru </h2>
+
+      <p>
+        <a href="http://www.robot-electronics.co.uk/htm/srf08tech.shtml">
+        http://www.robot-electronics.co.uk/htm/srf08tech.shtml</a>
+      </p>
+      
+      <h2 class="Small"> Dokumentace ke kompasu </h2>
+      
+      <p>
+        <a href="http://www.robot-electronics.co.uk/htm/cmps3doc.shtml">
+        http://www.robot-electronics.co.uk/htm/cmps3doc.shtml</a>
+      </p>
+      
+      <h2 class="Small"> Dokumentace k&nbsp;robotu 3Orbis </h2>
+      
+      <p>
+        <a href="http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=%2FDesigns%2FROBOTS%2F3Orbis%2F#_Designs_ROBOTS_3Orbis_">
+        http://www.mlab.cz/WebSVN/listing.php?repname=MLAB&amp;path=/Designs/ROBOTS/3Orbis/#_Designs_ROBOTS_3Orbis_</a>
+      </p>
+      
+      
+      <h2 class="Small"> Video </h2>
+      
+      <p>
+        Videozáznam, jak Camerus jezdil při soutěži IstRobot 2007:
+        <br>
+        <a href="../video/1.wmv">1.&nbsp;jízda</a>,
+        <a href="../video/2.wmv">2.&nbsp;jízda</a>,
+        <a href="../video/3.wmv">3.&nbsp;jízda</a>.
+      </p>
+      
+    </div>
+
+    <!-- AUTOINCLUDE START "Page/Footer.cs.ihtml" DO NOT REMOVE -->
+    <!-- ============== PATIČKA ============== -->
+    <div class="Footer">
+      <script type="text/javascript">
+      <!--
+        SetRelativePath("../../../../../");
+        DrawFooter();
+      // -->
+      </script>
+      <noscript>
+        <p><b> Pro zobrazení (vložení) hlavičky je potřeba JavaScript </b></p>
+      </noscript>
+    </div>
+    <!-- AUTOINCLUDE END -->
+
+  </body>
+</html>

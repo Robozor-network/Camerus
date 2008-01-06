@@ -1,0 +1,19 @@
+﻿//
+// Toto je popisný soubor pro popis obsahu adresáře (příklad)
+//
+
+[InfoShortDescription.en]
+  Robot Camerus
+
+[InfoShortDescription.cs]
+  Robot Camerus
+  
+[InfoLongDescription.en]
+  Line following robot with many sensors. For line detection
+  uses CMOS camera.
+
+[InfoLongDescription.cs]
+  Čárový robot se spoustou čidel. Pro sledování čáry používá 
+  i CMOS kameru.
+
+[End]
